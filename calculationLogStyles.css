@@ -1,0 +1,62 @@
+.calculationLogContainer{
+    margin: 1rem;
+    padding: 1rem;
+    background-color: var(--background-color-dark2);
+    opacity: 1;
+    display: block;
+    position: relative;
+}
+
+.calculationContainer.divider{
+    padding: 1.5rem;
+}
+
+.headingDividerText{
+    display: block;
+    font-size: 1.5rem;
+    width: 100%;
+    text-align: center;
+}
+
+.calculationLogContainer.hidden{
+    display: none;
+    background-color: var(--background-color-dark1);
+}
+
+.calculationLogContainer li{
+    margin-bottom: 1rem;
+}
+
+.calculationLogContainer h4{
+    font-size: 1rem;
+    margin-top: 3rem;
+
+}
+.calculationLogContainer h2{
+    font-weight: lighter;
+}
+
+
+
+/* Calculation */
+
+.calculationContainer{
+    background-color: var(--background-color-dark3);
+    margin: 0.5rem;
+    padding: 0.5rem;
+    display: flex;
+    box-shadow: 0.2rem 0.2rem 0.1rem var(--background-color-dark1);
+}
+
+.text{
+    margin: 1rem;
+}
+
+.text.number{
+    font-family: "Roboto Mono", monospace;
+}
+
+.text.chemistryFormula{
+    font-family: "Roboto Mono", monospace;
+    min-width: 5rem;
+}

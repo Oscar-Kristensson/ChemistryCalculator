@@ -1,0 +1,261 @@
+
+
+:root{
+    --periodicTableAtomSize: ;
+    --periodicTableMargin: 0.1rem;
+    --periodicTablePadding: 0.1rem;
+
+    --periodicTableAtom-saturation: 40%;
+    --periodicTableAtom-brightness: 20%; 
+
+    --periodicTableAtom-alkali-metals-color: hsl(0, var(--periodicTableAtom-saturation), var(--periodicTableAtom-brightness));
+    --periodicTableAtom-alkali-earth-metals-color: hsl(20, var(--periodicTableAtom-saturation), var(--periodicTableAtom-brightness));
+    --periodicTableAtom-transition-metals-color: hsl(40, var(--periodicTableAtom-saturation), var(--periodicTableAtom-brightness));
+    --periodicTableAtom-lanthanoids-color: hsl(60, var(--periodicTableAtom-saturation), var(--periodicTableAtom-brightness));
+    --periodicTableAtom-actinoids-color: hsl(80, var(--periodicTableAtom-saturation), var(--periodicTableAtom-brightness));
+    --periodicTableAtom-post-transition-metals-color: hsl(120, var(--periodicTableAtom-saturation), var(--periodicTableAtom-brightness));
+    --periodicTableAtom-metalloids-color: hsl(200, var(--periodicTableAtom-saturation), var(--periodicTableAtom-brightness));
+    --periodicTableAtom-reactive-nonmetals-color: hsl(240, var(--periodicTableAtom-saturation), var(--periodicTableAtom-brightness));
+    --periodicTableAtom-noble-gases-color: hsl(270, var(--periodicTableAtom-saturation), var(--periodicTableAtom-brightness));
+
+
+}
+
+.light-theme {
+    --periodicTableAtom-brightness: 80%;
+    --periodicTableAtom-saturation: 60%;
+
+    --periodicTableAtom-alkali-metals-color: hsl(0, var(--periodicTableAtom-saturation), var(--periodicTableAtom-brightness));
+    --periodicTableAtom-alkali-earth-metals-color: hsl(20, var(--periodicTableAtom-saturation), var(--periodicTableAtom-brightness));
+    --periodicTableAtom-transition-metals-color: hsl(40, var(--periodicTableAtom-saturation), var(--periodicTableAtom-brightness));
+    --periodicTableAtom-lanthanoids-color: hsl(60, var(--periodicTableAtom-saturation), var(--periodicTableAtom-brightness));
+    --periodicTableAtom-actinoids-color: hsl(80, var(--periodicTableAtom-saturation), var(--periodicTableAtom-brightness));
+    --periodicTableAtom-post-transition-metals-color: hsl(120, var(--periodicTableAtom-saturation), var(--periodicTableAtom-brightness));
+    --periodicTableAtom-metalloids-color: hsl(200, var(--periodicTableAtom-saturation), var(--periodicTableAtom-brightness));
+    --periodicTableAtom-reactive-nonmetals-color: hsl(240, var(--periodicTableAtom-saturation), var(--periodicTableAtom-brightness));
+    --periodicTableAtom-noble-gases-color: hsl(270, var(--periodicTableAtom-saturation), var(--periodicTableAtom-brightness));
+
+}
+
+
+
+.periodicTableContainer{
+    width: 100%;
+    overflow: auto;
+    display: grid;
+    grid-template-rows: auto auto;
+    grid-template-columns: 3ch repeat(32, calc(99%/18 - 1px));
+    /*grid-template-columns: repeat(auto-fill, minmax(100px, 1fr)); /* Adjusts to fit parent width */
+
+}
+
+.periodicTableContainer.renderingBellow{
+    overflow: hidden;
+    grid-template-columns: 3ch repeat(18, calc(99%/18 - 1px));
+}
+
+.periodicTablePeriod{
+    display: flex;
+}
+
+
+
+
+
+.periodicTableAtom.right{
+    margin-left: auto;
+}
+
+
+.periodicTableSpacer{
+    min-width: var(--periodicTableAtomSize);
+    height: 1cm;
+
+}
+
+.periodicTableRangeDisplayer{
+    display: none;
+}
+
+
+.periodicTableContainer.renderingBellow .periodicTableRangeDisplayer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+
+
+/* Periodic Table Atom */
+.periodicTableAtom{
+    /*background-color: var(--background-color-dark3);*/
+
+    /*width: calc(var(--periodicTableAtomSize) - var(--periodicTableMargin) - var(--periodicTablePadding));
+    /*height: calc(var(--periodicTableAtomSize) - var(--periodicTableMargin) - var(--periodicTablePadding));*/
+    margin: var(--periodicTableMargin);
+    transition: border-color background-color filter 500ms ease-in-out;
+    border-color: transparent;
+    box-sizing: border-box;
+    cursor: pointer;
+    aspect-ratio: 1 / 1;
+
+    min-width: 30px;
+
+}
+
+.periodicTableContainer.gray .periodicTableAtom{
+    background-color: var(--background-color-dark3);
+}
+
+
+.periodicTableAtom.atomType_alkali-metals{
+    background-color: var(--periodicTableAtom-alkali-metals-color);
+}
+
+.periodicTableAtom.atomType_alkali-earth-metals{
+    background-color: var(--periodicTableAtom-alkali-earth-metals-color);
+}
+
+.periodicTableAtom.atomType_transition-metals{
+    background-color: var(--periodicTableAtom-transition-metals-color);
+}
+
+.periodicTableAtom.atomType_lanthanoids{
+    background-color: var(--periodicTableAtom-lanthanoids-color);
+}
+
+.periodicTableAtom.atomType_actinoids{
+    background-color: var(--periodicTableAtom-actinoids-color);
+}
+
+.periodicTableAtom.atomType_post-transision-metals{
+    background-color: var(--periodicTableAtom-post-transition-metals-color);
+}
+
+.periodicTableAtom.atomType_metalloids{
+    background-color: var(--periodicTableAtom-metalloids-color);
+}
+
+.periodicTableAtom.atomType_reactive-nonmetals{
+    background-color: var(--periodicTableAtom-reactive-nonmetals-color);
+}
+
+.periodicTableAtom.atomType_noble-gases{
+    background-color: var(--periodicTableAtom-noble-gases-color);
+}
+
+.periodicTableAtom.atomType_unkown{
+    background-color: var(--background-color-dark3);
+}
+
+
+
+.periodicTableAtom.marked{
+    filter: saturate(400%);
+    border: var(--red-button-color) solid 0.1rem;
+    box-shadow: 0.2rem 0.2rem 0.1rem black;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.periodicTableAtom .atomNumberDisplay{
+    font-size: 0.8rem;
+}
+
+.periodicTableAtom .atomSymbolDisplay{
+    font-size: 1.5rem;
+}
+
+
+.periodicTableAtom .atomMassDisplay{
+    font-size: 0.8rem;
+}
+
+.periodicTableAtom .atomNameDisplay{
+    font-size: 0.8rem;
+}
+
+
+@media (min-width: 1700px) {
+    .periodicTableAtom {
+        padding: 0.2rem;
+        margin: 0.1rem;
+    }
+    
+}
+
+@media (max-width: 1600px) {
+    .periodicTableAtom .atomNameDisplay{
+        font-size: 0.6rem;
+    }
+    
+}
+
+@media (max-width: 1400px) {
+    .periodicTableAtom .atomNameDisplay{
+        font-size: 0.4rem;
+    }
+
+    .periodicTableAtom .atomNumberDisplay{
+        font-size: 0.6rem;
+    }
+    
+    .periodicTableAtom .atomSymbolDisplay{
+        font-size: 1.2rem;
+    }
+    
+    
+    .periodicTableAtom .atomMassDisplay{
+        font-size: 0.6rem;
+    }
+    
+    
+}
+
+@media (max-width: 1000px) {
+    .periodicTableContainer{
+        overflow: auto;
+        grid-template-columns: 3ch repeat(32, 50px);
+
+    }
+
+    .periodicTableContainer.renderingBellow{
+        overflow: auto;
+        grid-template-columns: 3ch repeat(18, 50px);
+
+    }
+}
+
+
+.periodicTableContainer .groupNumber{
+    display: none;
+    align-items: center;
+    justify-content: center;
+    font-size: 1rem;
+}
+
+.periodicTableContainer.renderingBellow .groupNumber{
+    display: flex;
+}

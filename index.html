@@ -1,0 +1,764 @@
+<!DOCTYPE html>
+<html lang="sv">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="styles.css">
+        <link rel="stylesheet" href="calculationLogStyles.css">
+        <link rel="stylesheet" href="fileMenuStyle.css">
+        <link rel="stylesheet" href="periodicTable.css">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="icon" href="icon.svg" type="image/x-icon">
+        <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,100..700;1,100..700&family=Roboto:wght@100;300;400;500&display=swap" rel="stylesheet">
+        <script src="equilibriumConstantCalculation.js" defer></script>
+        <script src="geogebraCalculationExport.js" defer></script>
+        <script src="calculationLog.js" defer></script>
+        <script src="chemistryData.js" defer></script>
+        <script src="periodicTable.js" defer></script>
+        <script src="chemistryCalculations.js" defer></script>
+        <script src="script.js" defer></script>
+        <script src="chemistryFormula.js" defer></script>
+        <script src="loadSaveOperations.js" defer></script>
+        
+        <title>Chemistry Calculator</title>
+    </head>
+    <!-- Close Icon -->
+    <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+        <defs>
+            <symbol id="closeIcon" viewBox="0 -960 960 960" fill="currentColor">
+                <path d="m252.85-230.85-22-22L458-480 230.85-707.15l22-22L480-502l227.15-227.15 22 22L502-480l227.15 227.15-22 22L480-458 252.85-230.85Z"/>
+            </symbol>
+        </defs>
+    </svg>
+    <!-- Resolve Icon -->
+    <div class="hiddenContainer">
+        <svg id="originalResolveIcon" xmlns="http://www.w3.org/2000/svg" height="48px" viewBox="0 -960 960 960" width="48px" fill="currentColor">
+            <path d="M380.31-270.62 183.23-467.69l22.23-21.46 174.85 174.84 374-374.77 22.23 22.23-396.23 396.23Z"/>
+        </svg>
+    </div>
+    <body class="">  <!-- Temp: normalCalculationMode -->
+        <div class="statusContainer">
+            <div class="iconContainer expander" title="Show Status Bar">
+                <svg xmlns="http://www.w3.org/2000/svg" height="48px" viewBox="0 -960 960 960" width="48px" fill="currentColor">
+                    <path d="M543.23-480 417.08-353.85l21.23 22.23L586.69-480 438.31-628.38l-21.23 22.23L543.23-480Zm-63.1 360q-74.67 0-140.41-28.34-65.73-28.34-114.36-77.42-48.63-49.08-76.99-114.37Q120-405.42 120-479.87q0-74.67 28.34-140.41 28.34-65.73 76.92-114.36 48.58-48.63 114.26-76.99Q405.19-840 479.87-840q74.67 0 139.91 28.34 65.23 28.34 114.36 76.92 49.13 48.58 77.49 114.26Q840-554.81 840-480.13q0 74.44-28.34 139.79t-77.42 114.48q-49.08 49.13-114.26 77.49Q554.81-120 480.13-120Zm-.13-30.77q137.15 0 233.19-96.04 96.04-96.04 96.04-233.19 0-137.38-96.04-233.31-96.04-95.92-233.19-95.92-137.38 0-233.31 95.92-95.92 95.93-95.92 233.31 0 137.15 95.92 233.19 95.93 96.04 233.31 96.04ZM480-480Z"/>
+                </svg>
+            </div>
+            <div class="iconContainer clickable" id="settingsIcon">
+                <svg class="icon settingsIcon" xmlns="http://www.w3.org/2000/svg" height="48px" viewBox="0 -960 960 960" width="48px">
+                    <path fill="currentColor" d="m421-132-15-111q-23-7-51-22.5T308-299l-102 46-59-105 90-67q-2-13-3.5-27t-1.5-27q0-12 1.5-26t3.5-30l-90-68 59-102 101 44q22-18 48-33t50-22l16-112h118l15 112q27 10 50 23t45 32l106-44 58 102-94 70q4 15 5 28t1 25q0 11-1.5 24t-4.5 30l93 68-59 105-104-47q-23 20-46.5 34.5T554-244l-15 112H421Zm18-22h81l15-111q30-8 54.5-22t51.5-39l102 44 40-69-90-67q4-19 6-33.5t2-28.5q0-16-2-29.5t-6-30.5l92-69-40-69-105 44q-18-20-49-39t-57-22l-13-111h-82l-12 110q-32 6-57.5 20.5T318-635l-103-43-40 69 90 66q-5 14-7 30t-2 34q0 16 2 31t6 30l-89 67 40 69 102-43q24 25 50 39t59 22l13 110Zm38-241q36 0 60.5-24.5T562-480q0-36-24.5-60.5T477-565q-35 0-60 24.5T392-480q0 36 25 60.5t60 24.5Zm3-85Z"/>
+                </svg>
+            </div>
+            <div class="iconContainer clickable lockIconContainer  unlocked" title="Lock/Unlock the calculator">
+                <svg class="icon lockIcon locked" id="lockIconLocked" xmlns="http://www.w3.org/2000/svg" height="48px" viewBox="0 -960 960 960" width="48px" fill="#e8eaed">
+                    <path fill="currentColor" d="M266-132q-21.75 0-37.87-16.13Q212-164.25 212-186v-346q0-22.53 16.13-38.26Q244.25-586 266-586h69v-85q0-60.76 42.17-102.88 42.18-42.12 103-42.12Q541-816 583-773.88T625-671v85h69q21.75 0 37.88 15.74Q748-554.53 748-532v346q0 21.75-16.12 37.87Q715.75-132 694-132H266Zm0-22h428q14 0 23-9t9-23v-346q0-14-9-23t-23-9H266q-14 0-23 9t-9 23v346q0 14 9 23t23 9Zm214.17-152q21.83 0 37.33-15.53T533-359q0-21-15.67-37t-37.5-16q-21.83 0-37.33 16T427-358.5q0 21.5 15.67 37t37.5 15.5ZM357-586h246v-85q0-51.25-35.82-87.13-35.83-35.87-87-35.87Q429-794 393-758.13q-36 35.88-36 87.13v85ZM234-154v-410 410Z"/>
+                </svg>
+                <svg class="icon lockIcon unlocked" id="lockIconUnocked" xmlns="http://www.w3.org/2000/svg" height="48px" viewBox="0 -960 960 960" width="48px" fill="#e8eaed">
+                    <path fill="currentColor" d="M266-586h337v-85q0-51.25-35.82-87.13-35.83-35.87-87-35.87Q429-794 393-758.13q-36 35.88-36 87.13h-22q0-61 42.17-103 42.18-42 103-42Q541-816 583-773.88T625-671v85h69q21.75 0 37.88 15.74Q748-554.53 748-532v346q0 21.75-16.12 37.87Q715.75-132 694-132H266q-21.75 0-37.87-16.13Q212-164.25 212-186v-346q0-22.53 16.13-38.26Q244.25-586 266-586Zm0 432h428q14 0 23-9t9-23v-346q0-14-9-23t-23-9H266q-14 0-23 9t-9 23v346q0 14 9 23t23 9Zm214.17-152q21.83 0 37.33-15.53T533-359q0-21-15.67-37t-37.5-16q-21.83 0-37.33 16T427-358.5q0 21.5 15.67 37t37.5 15.5ZM234-154v-410 410Z"/>
+                </svg>
+            </div>
+
+            <div class="iconContainer clickable" id="themeSelectorButtonContainer" title="Change color theme">
+                <svg class="icon" xmlns="http://www.w3.org/2000/svg" height="48px" viewBox="0 -960 960 960" width="48px" fill="#FFFFFF">
+                    <path fill="currentColor" d="M478.46-120q-73.54 0-138.84-28.42-65.31-28.43-114.04-77.16-48.73-48.73-77.16-114.42Q120-405.69 120-480q0-75.77 28.92-141.46 28.93-65.69 79.04-114.31 50.12-48.61 117.69-76.42Q413.23-840 489.77-840q69.77 0 133.08 23.04 63.3 23.04 111.42 64.65 48.11 41.62 76.92 98.81Q840-596.31 840-528.54q0 89.54-50.31 145.89-50.31 56.34-145.07 56.34h-71.16q-29.54 0-51 21.31T501-254.38q0 32.38 14.88 48.3 14.89 15.93 14.89 37.08 0 23.38-13.31 36.19-13.31 12.81-39 12.81ZM480-480Zm-226.08 13.69q13.85 0 24.62-10.77 10.77-10.77 10.77-24.61 0-13.85-10.77-24.62-10.77-10.77-24.62-10.77-13.84 0-24.61 10.77t-10.77 24.62q0 13.84 10.77 24.61t24.61 10.77Zm122.93-164.61q13.84 0 24.61-10.77t10.77-24.62q0-13.84-10.77-24.61t-24.61-10.77q-13.85 0-24.62 10.77-10.77 10.77-10.77 24.61 0 13.85 10.77 24.62 10.77 10.77 24.62 10.77Zm206.3 0q13.85 0 24.62-10.77 10.77-10.77 10.77-24.62 0-13.84-10.77-24.61t-24.62-10.77q-13.84 0-24.61 10.77t-10.77 24.61q0 13.85 10.77 24.62 10.77 10.77 24.61 10.77ZM708-466.31q13.85 0 24.62-10.77 10.76-10.77 10.76-24.61 0-13.85-10.76-24.62-10.77-10.77-24.62-10.77-13.85 0-24.62 10.77-10.76 10.77-10.76 24.62 0 13.84 10.76 24.61 10.77 10.77 24.62 10.77ZM478.46-150.77q11 0 16.27-4.5T500-169q0-14-14.88-26.77-14.89-12.77-14.89-50.69 0-45.23 29.62-77.92 29.61-32.7 73.3-32.7h71.47q79.84 0 122.23-47.19 42.38-47.19 42.38-124.27 0-126.61-96.92-203.65-96.93-77.04-222.54-77.04-142.92 0-240.96 95.42-98.04 95.43-98.04 233.81 0 136.38 96.04 232.81 96.04 96.42 231.65 96.42Z"/>
+                </svg>                
+                <div class="themeSelectorContainer">
+                    <label for="themeSelector" style="display: none;">Theme: </label>
+                    <select name="Theme Selector" class="themeSelector" id="themeSelector">
+                        <option value="dark-theme">Dark</option>
+                        <option value="light-theme">Light</option>
+                        <option value="blue-theme" style="color: hsl(240, 100%, 75%);">Blue</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="iconContainer clickable" id="notesIcon" title="Open Notes">
+                <svg xmlns="http://www.w3.org/2000/svg" height="48px" class = "icon notesIcon" viewBox="0 -960 960 960" width="48px">
+                    <path fill="currentColor" d="M346-269h268v-22H346v22Zm0-163h268v-22H346v22Zm-80 300q-22.77 0-38.39-15.61Q212-163.23 212-186v-588q0-22.78 15.61-38.39Q243.23-828 266-828h326l156 156v486q0 22.77-15.61 38.39Q716.78-132 694-132H266Zm315-530v-144H266q-12 0-22 10t-10 22v588q0 12 10 22t22 10h428q12 0 22-10t10-22v-476H581ZM234-806v144-144 652-652Z"/>
+                </svg>
+            </div>
+            <div class="iconContainer clickable" id="errorMessageIcon" title="Open Error messages">
+                <svg class="icon errorMessageIcon" xmlns="http://www.w3.org/2000/svg" height="48px" viewBox="0 -960 960 960" width="48px" fill="currentColor">
+                    <path d="M479.98-301.54q9.79 0 15.64-5.83 5.84-5.83 5.84-15.61 0-9.79-5.83-15.64-5.83-5.84-15.61-5.84-9.79 0-15.64 5.83-5.84 5.83-5.84 15.61 0 9.79 5.83 15.64 5.83 5.84 15.61 5.84Zm-13.9-129.15h30.77v-246.08h-30.77v246.08ZM480.4-120q-75.18 0-140.29-28.34-65.12-28.34-114.25-77.42-49.13-49.08-77.49-114.21Q120-405.11 120-480.37q0-74.49 28.34-140.07 28.34-65.57 77.42-114.2 49.08-48.63 114.21-76.99Q405.11-840 480.37-840q74.49 0 140.07 28.34 65.57 28.34 114.2 76.92 48.63 48.58 76.99 114.26Q840-554.81 840-480.4q0 75.18-28.34 140.29-28.34 65.12-76.92 114.07-48.58 48.94-114.26 77.49Q554.81-120 480.4-120Zm.1-30.77q136.88 0 232.81-96.04 95.92-96.04 95.92-233.69 0-136.88-95.73-232.81-95.74-95.92-233.5-95.92-137.15 0-233.19 95.73-96.04 95.74-96.04 233.5 0 137.15 96.04 233.19 96.04 96.04 233.69 96.04ZM480-480Z"/>
+                </svg>
+            </div>
+
+
+
+
+        </div>
+        <div class="screenBox hidden">
+        </div>
+
+        <div class="messageBoxContainer">
+            <div class="normalMessageBox hide middleOfScreen color mobileOptimization scrollable" id="settingsMessageBox">
+                <div class="settingsContainer">
+                    <h3>Settings</h3>
+                    <button class="normalButtonElement closeButton" onclick="toggleSettings()"><svg><use href="#closeIcon"></use></svg></button>
+                    <h4>Lock</h4>
+                    <div class="singleSettingsContainer">
+                        <label for="useAutoLocking">Use Auto Locking</label>
+                        <input type="checkbox" name="" id="useAutoLocking" checked>
+                        
+                    </div>
+                    <h4>Error handling</h4>
+                    <div class="singleSettingsContainer">
+                        <label for="errorPrecisionInput" style="margin-right: 1ch;">Error precision</label>
+                        <input type="number" name="" min="0" title="Input how close the values have to be to be valid in the calculator. A value of 0 turns the error check off." id="errorPrecisionInput" class="normalInputElement bright" style="width: 10ch;">
+                        
+                    </div>
+                    <h4>User Interface</h4>
+                    <div class="singleSettingsContainer">
+                        <label for="messageboxBlurBackgroundInput" style="margin-right: 1ch;">Blur background when messagebox is open</label>
+                        <input type="checkbox" name="" id="messageboxBlurBackgroundInput" checked>
+                    </div>                      
+                    <div class="singleSettingsContainer">
+                        <label for="shortQuantityLablesInput" style="margin-right: 1ch;">Short quantity labels</label>
+                        <input type="checkbox" name="" id="shortQuantityLablesInput" checked>
+                    </div>                      
+                    <div class="singleSettingsContainer">
+                        <label for="messageboxWidenInputFieldOnFocus" style="margin-right: 1ch;">Widen inputs when clicked</label>
+                        <input type="checkbox" name="" id="messageboxWidenInputFieldOnFocus">
+                    </div>                    
+                    <h4>Calculations</h4>
+                    <div class="singleSettingsContainer">
+                        <label for="messageboxFullAutomationInput" style="margin-right: 1ch;">Full automation</label>
+                        <input type="checkbox" name="" id="messageboxFullAutomationInput" checked>           
+                    </div>
+                </div>
+            </div>
+            <div class="normalMessageBox hide middleOfScreen color mobileOptimization" id="notesMessageBox">
+                <div class="notesContainer">
+                    <h3>Notes</h3>
+                    <button class="normalButtonElement closeButton" onclick="toggleNotes()"><svg><use href="#closeIcon"></use></svg></button>
+    
+                    <advanced-textarea id="notesElement" placeholder="Click to type notes" class="notesTextArea"></advanced-textarea>
+                    
+                </div>
+            </div>        
+        </div>
+
+
+        <div class="pageContainer">
+
+
+
+        <header class="calculatorHeadingContainer">
+            <h1 class="calculatorHeadingElement notMarkableText">Chemistry Calculator</h1>
+        </header>
+
+
+
+        <main class="mainContainer">
+            <!-- Calculator GUI -->
+            <div >
+
+            </div>
+            <div class="calculatorGUIContainer">
+                <div class="calculatorContainer">
+                    <div class="tableContainer">
+                        <table class="table" id="table">
+                            <tr id="tableSubstanceRow">
+                                <th lang="en">Substance</th>                                
+                                
+                                <!--
+                                                    <td>CO<sub>2</sub></td>
+                                                    <td>
+                                                        <select name="Test" class="operatorSelector">
+                                                            <option value="+">+</option>
+                                                            <option value=">">→</option>
+                                                            <option value="=">⇆</option> 
+                                                        </select>
+                                                    </td>
+                                                    <td>H<sub>2</sub>O</td>
+                                -->
+        
+        
+                        </tr>
+                        <tr class="tableRatioRow">
+                            <th>Ratio</th>
+                        </tr>
+                        <tr>
+                            <th><span class="name">Mass</span><span class="quantity">m</span><span class="unit">[g]</span></th>
+                        </tr>
+                        <tr>
+                            <th><span class="name">Molar mass</span><span class="quantity">M</span><span class="unit">[g/mol]</span></th>
+                        </tr>
+                        <tr>
+                            <th><span class="name">Substance amount</span><span class="quantity">n</span><span class="unit">[mol]</span></th>
+                        </tr>
+                        <tr class="advanced">
+                            <th><span class="name">Volume</span><span class="quantity">v</span><span class="unit">[dm<sup>3</sup>]</span></th>
+                        </tr>
+                        <tr class="advanced">
+                            <th><span class="name">Concentration</span><span class="quantity">c</span><span class="unit">[mol/dm<sup>3</sup>]</span></th>
+                            
+                        </tr>
+
+                        <tr class="equilibriumCalculationMode">
+                            <th><span class="name">&Delta; Substance amount equilibrium</span><span class="quantity">&Delta;n</span><span class="unit">[mol]</span></th>
+                        </tr>
+                        
+                        <tr class="equilibriumCalculationMode">
+                            <th><span class="name">&Delta; Volume</span><span class="quantity">&Delta;v</span><span class="unit">[mol]</span></th>
+                        </tr>
+                        
+                        <tr class="equilibriumCalculationMode">
+                            <th><span class="name">&Delta; Concentration</span><span class="quantity">&Delta;c</span><span class="unit">[mol]</span></th>
+                        </tr>
+                        
+                        <tr class="equilibriumCalculationMode">
+                            <th><span class="name">Substance amount equilibrium</span><span class="quantity">n<sub>eq</sub></span><span class="unit">[mol]</span></th>
+                        </tr>
+                        
+                        <tr class="equilibriumCalculationMode">
+                            <th><span class="name">Volume equilibrium</span><span class="quantity">v<sub>eq</sub></span><span class="unit">[mol]</span></th>
+                        </tr>
+                        
+                        <tr class="equilibriumCalculationMode">
+                            <th><span class="name">Concentration equilibrium</span><span class="quantity">c<sub>eq</sub></span><span class="unit">[mol]</span></th>
+                        </tr>
+                        
+                        
+                    </table>
+                    </div>
+                    
+                    <div class="buttonPanelContainer notMarkableText">
+                        <button onclick="autofillMolarmasses()" class="textButton" title="CTRL + Shift + M, fills the molarmasses from the chemistry formula">Autofill Molarmasses</button>
+                        <div id="clearButtonContainer" class="clearButtonContainer">
+                            <button onclick="clearData()" title="Clear the data from the selected cells">
+                                Clear
+                            </button>
+                            <select id="clearButtonTypeSelector">
+                                <option value="calculated" title="Values that are calculated by the computer">Calculated</option>
+                                <option value="unvalid" title="Values that the computer has marked as unvalid">Unvalid</option>
+                                <option value="loaded" title="Values that are loaded in from a file">Loaded</option>
+                                <option value="all" title="All values except for the molecules">All</option>
+                            </select>
+                        </div>
+                        
+                        <button onclick="createNewColumn()" title="CTRL + Shift + K"><p>Add Column</p>
+                            
+                            <svg class="buttonIcon" xmlns="http://www.w3.org/2000/svg" height="48px" viewBox="0 -960 960 960" width="48px" fill="#e8eaed"><path fill="currentColor" d="M469-469.5H252v-22h217v-217h22v217h217v22H491v217h-22v-217Z"/></svg></button>
+                            <button onclick="removeColumn()" title="CTRL + Shift + L"><p>Remove Column</p>
+                                <svg class="buttonIcon" xmlns="http://www.w3.org/2000/svg" height="48px" viewBox="0 -960 960 960" width="48px" fill="#e8eaed"><path fill="currentColor" d="M306-172q-21.75 0-37.87-16.13Q252-204.25 252-226v-503h-40v-21.67h144V-776h248v25h144v22h-40v503.23q0 22.01-15.88 37.89Q676.24-172 654-172H306Zm380-557H274v503q0 14 9.5 23t22.5 9h348q12 0 22-10t10-22v-503ZM404-276.5h22v-372h-22v372Zm130 0h22v-372h-22v372ZM274-729v535-535Z"/></svg>            
+                            </button>
+                            <button onclick="executeCalculations()" title="CTRL + Shift + Enter, fill in the missing information from the provided information"><p>Calculate</p>
+                                <svg class="buttonIcon" xmlns="http://www.w3.org/2000/svg" height="48px" viewBox="0 -960 960 960" width="48px" fill="#e8eaed">
+                                <path fill="currentColor" d="M334-252h25v-83h83v-25h-83v-82h-25v82h-82v25h82v83Zm205-32h168v-25H539v25Zm0-102h168v-25H539v25Zm26-163 57-58 58 58 18-19-58-56 58-58-18-18-57.5 57-57.5-57-19 18 58 58-58 56 19 19Zm-302-63h167v-25H263v25Zm-37.24 440q-22 0-37.88-15.88Q172-203.76 172-225.76v-508.48q0-22 15.88-37.88Q203.76-788 225.76-788h508.48q22 0 37.88 15.88Q788-756.24 788-734.24v508.48q0 22-15.88 37.88Q756.24-172 734.24-172H225.76Zm.24-22h508q12 0 22-10t10-22v-508q0-12-10-22t-22-10H226q-12 0-22 10t-10 22v508q0 12 10 22t22 10Zm-32-572v572-572Z"/>
+                                </svg>
+                            </button>
+                    </div>
+                    <div class="buttonPanelContainer dev hidden" id="developerToolsContainer">
+                        <h4>Developer Tools</h4>
+                        
+                        <button onclick="developerToolsContainer.classList.add('hidden')" class="textButton" title="CTRL + Shift + M, fills the molarmasses from the chemistry formula">Close Developer Tools </button>
+                        <button onclick="transferMolarMassesUsingRatio()" class="textButton" title="CTRL + Shift + M, fills the molarmasses from the chemistry formula">Transfer molarmasses using ratio </button>
+                        <button onclick="fillInWCalculationsInAllFormulaUnits()" class="textButton" title="Fills the molarmasses from the chemistry formula">Fill in with calculations for all</button>
+                        <button onclick="unlockAfterCalculations()" class="textButton" title="">Unlock</button>
+                        <button onclick="lockWhileCalculating()" class="textButton" title="">Lock</button>
+                    </div>
+                </div>
+
+
+                <div id="errorDisplayElement"></div>
+
+
+                <div class="calculatorAttributesContainer">
+                    
+                    <div class="calculatorAttributeContainer normalCalculationMode">
+                        <p title="Input the percentage of the substances that react">Exchange [%]</p>
+                        <input type="number" class="attributeInput exchange" value="100" id="exchangeInput">
+                    </div>
+
+                    <div class="calculatorAttributeContainer">
+                        <p title="Checkbox: Set if the balansing should be checked when calculating. Click: Check the balansing" id="useConstantVolumeParagraph">Same volume</p>
+                        <input type="checkbox" class="attributeInput useConstantVolume" id="useConstantVolumeInput" checked>
+                    </div>
+
+                    <div class="calculatorAttributeContainer">
+                        <p title="Checkbox: Set if the balansing should be checked when calculating. Click: Check the balansing" id="checkBalansingParagraph">Check balancing</p>
+                        <input type="checkbox" class="attributeInput checkBalansing" id="checkBalansingInput" checked>
+                    </div>
+                    
+                    <div class="calculatorAttributeContainer normalCalculationMode">
+                        <p title="Should the calculator account for the fact that a substance can limit the reaction" id="useLimitingReactantParagraph">Use Limiting Reactant</p>
+                        <input type="checkbox" class="attributeInput checkBalansing" id="useLimitingReactantInput">
+                    </div>
+                    
+                </div>
+
+            </div>
+
+        
+        </main>
+
+        <div class="errorMessagesContainer hide">
+            <h2>Error Messages</h2>
+            <p>More information about the errors can be found in the documentation.</p>
+        </div>
+
+
+
+
+
+
+        <!-- Help and other GUI -->
+
+
+
+
+
+        <div class="fileMenuContainer hidden">
+            <button class="closeButton" onclick="toggleFileMenuVisibility()"><svg><use href="#closeIcon"></use></svg></button>
+            <h2>File </h2>
+            <p>Save and export files</p>
+
+            <div class="buttonPanel">
+                <input type="file" class="fileMenuInput" accept=".cc.json">
+                <button id="openNewWithURLParams" onclick="openSimilarFromURLParams()" title='Open a new link with the calculation copied'>Open similar</button>
+                <button onclick="clickOpenFile()" title='CTRL + Shift + 1, Upload a "".cc.json" file that contains the calculations'>Open File</button>
+                <button onclick="saveCalculationState()" title='CTRL + Shift + 2, Download a ".cc.json" file that contains the calculations'>Export</span></button>
+                <button onclick="tools_CSV_toggleVisibility()" title='Download a ".csv" file that contains the calculations'>Export to CSV</button>
+                <div class="textStorageContainer" id="exportToTextOutputContainer">
+                    <button onclick="exportCalculationToText()" title="Get calculations in text form">Export to Text</button>
+                    <textarea class="normalTextAreaElement oneline" id="exportToTextOutput" ></textarea>
+                </div>
+                <div class="textStorageContainer" id="importFromTextInputContainer">
+                    <button onclick="showImportCalculationsInput()" title="Load calculations from text form">Import from Text</button>
+                    <textarea class="normalTextAreaElement oneline" placeholder="Insert the text here" id="importFromTextInput"></textarea>
+                </div>
+
+                
+                <div class="currentOpenFileDisplayElement"></div>
+                
+            </div>
+            
+            <div class="screenBox hidden" id="exportCSVDialogContainerScreenBox">
+                <div class="exportCSVDialogContainer">
+                    <button class="normalButtonElement closeButton" id="toggleCSVVisibilityButton" onclick="tools_CSV_toggleVisibility()"><svg><use href="#closeIcon"></use></svg></button>
+                    <div class="mainGUIContainer">
+                        <h4>Export to CSV</h4>
+
+                        <label for="useHeadingsInCSVExportCheckbox">Add Headings</label>
+                        <input checked type="checkbox" id="useHeadingsInCSVExportCheckbox" class="normalInputElement">
+                        
+                        <label for="addOperatorsInCSVExportCheckbox">Add Operators</label>
+                        <input type="checkbox" id="addOperatorsInCSVExportCheckbox" class="normalInputElement">
+                        
+
+                        <button onclick="tools_CSV_buttonClicked()">Export</button>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="errorMessages">
+                <div class="errorMessage warning" id="No file inputted">
+                    <p>There was no file inputted.</p>
+                </div>
+                
+                <div class="errorMessage error" id="Invalid file">
+                    <p>Invalid file</p>
+                </div>
+                
+            </div>
+
+        </div>
+
+        <div class="formulaMenuContainer hidden">
+            <button class="normalButtonElement closeButton" onclick="toggleFormulaMenu()"><svg><use href="#closeIcon"></use></svg></button>
+            <h2>Formula</h2>
+            <div class="formulaMenuContainer_currentFormulaContainer">
+                <div class="coefficentSettingContainer">
+                    <label for="useCoefficentsInFormulaDisplay">Show coefficents</label>
+                    <input type="checkbox" name="" id="useCoefficentsInFormulaDisplay" class="normalInput" checked>
+                </div>
+                <div class="formulaMenuContainer_currentFormula"></div>
+            </div>
+
+            <div class="protolysisFormulaMenuContainer">
+                <h3>Protolysis Reaction</h3>
+                <div class="optionContainer">
+                    <label for="pHInputElement">pH =</label>
+                    <input step="any" type="number" inputmode="numeric" class="normalInputElement bright shortNumberInput" id="pHInputElement">
+                </div>
+                
+                <div class="optionContainer">
+                    <label for="pHInputElement">pOH =</label>
+                    <input step="any" type="number" inputmode="numeric" class="normalInputElement bright shortNumberInput" id="pOHInputElement">
+                </div>
+
+                <div class="optionContainer">
+                    <label for="pHInputElement">pK<sub>w</sub> =</label>
+                    <input step="any" type="number" inputmode="numeric" class="normalInputElement bright shortNumberInput" id="pKwInputElement">
+                </div>
+                              
+                <div class="optionContainer acidConstantInputContainer">
+                    <label for="acidConstantInputElement">K<sub>a</sub> =</label>
+                    <input step="any" type="number" inputmode="numeric" class="normalInputElement bright shortNumberInput" id="acidConstantInputElement">
+                </div>     
+      
+                <div class="optionContainer acidConstantInputContainer">
+                    <label for="acidPConstantInputElement">pK<sub>a</sub> =</label>
+                    <input step="any" type="number" inputmode="numeric" class="normalInputElement bright shortNumberInput" id="acidPConstantInputElement">
+                </div>     
+
+                <div class="optionContainer baseConstantInputContainer">
+                    <label for="baseConstantInputElement">K<sub>b</sub> =</label>
+                    <input step="any" type="number" inputmode="numeric" class="normalInputElement bright shortNumberInput" id="baseConstantInputElement">
+                </div>     
+      
+                <div class="optionContainer baseConstantInputContainer">
+                    <label for="basePConstantInputElement">pK<sub>b</sub> =</label>
+                    <input step="any" type="number" inputmode="numeric" class="normalInputElement bright shortNumberInput" id="basePConstantInputElement">
+                </div>     
+
+            </div>
+
+            <div class="balancingTableContainer equilibriumCalculationMode">
+                <h3>Equilibrium Reaction</h3>
+
+                <div class="equilibriumConstants">
+                    <div class="equilibriumConstantContainer mathContainer">
+                        <span class="mathSymbol">Q</span>
+                        <span class="mathSymbol">=</span>
+                        <span class="mathSymbol"><input step="any" type="number" inputmode="numeric" class="normalInputElement bright shortNumberInput" id="equilibriumQuotientInputElement"></span>
+                        <span class="mathSymbol">=</span>
+                        <span class="mathSymbol"></span>
+                        <span class="mathDivisionOperator">
+                            <span class="mathContainer" id="equilibriumConstantResultantProduct"></span>
+                            <span class="mathSymbolDividerLine"></span>
+                            <span class="mathContainer" id="equilibriumConstantReactantProduct"></span>
+                        </span>
+                    </div>
+
+                    <div class="equilibriumConstantContainer mathContainer">
+                        <span class="mathSymbol">K</span>
+                        <span class="mathSymbol">=</span>
+                        <span class="mathSymbol"><input step="any" type="number" inputmode="numeric" class="normalInputElement bright shortNumberInput" id="equilibriumConstantInputElement"></span>
+                    </div>
+                </div>
+
+
+                <table class="table informationTable">
+                    <tr class="showHideElement hide">
+                        <td>Nettoreaction</td>
+                        <td id="formulaMenuReactionDirectionDisplayElement"></td>
+                    </tr>
+                    <tr class="showHideElement hide">
+                        <td>Unit</td>
+                        <td>(mol/dm<sub>3</sub>)<sup id="formulaMenuEquilibriumConstantUnitExponent">0</sup></td>
+                    </tr>
+                    <a href="" id="geogebraEquationLink" target="_blank">Open Equation in Geogebra</a>
+                </table>
+            </div>
+
+            <div class="balancingTableContainer">
+                <h3>Balancing Information</h3>
+                <table class="table" id="balancingTable">
+                    <tr>
+                        <th></th>
+                        <th>Atom</th>
+                        <th>Reactants</th>
+                        <th>→</th>
+                        <th>Resultants</th>
+                    </tr>
+                </table>
+            </div>
+            <br>
+            <h3>Energy Information</h3>
+            <div class="energyInformationContainer">
+                <p> &Delta;H <input type="number" step="any" class="normalInputElement bright" style="width: 10ch; margin-left: 1ch; margin-right: 1ch;" id="deltaEnthalpy" oninput="updateEnergyInformation()"> kJ/mol</p>
+                
+                <br>
+                <table class="energyInformationTable">
+                    <tr>
+                        <td>&Delta;H for reaction: </td>
+                        <td id="formulaMenu_deltaHDisplayElement" class="energyInformationTableDisplayElement unknown">unknown</th>
+                    </tr>
+                    <tr>
+                        <td>Reaction type: </td>
+                        <td id="formulaMenu_reactionEnergyType" class="energyInformationTableDisplayElement unknown">unknown</th>
+                    </tr>
+                </table>
+            </div>
+
+            <br>
+
+            <h3>Reaction Information</h3>
+            <div class="energyInformationContainer">
+                <table class="energyInformationTable">
+                    <tr>
+                        <td>Base molar amount: </td>
+                        <td id="formulaMenu_baseMolarAmount" class="energyInformationTableDisplayElement unknown">unknown</th>
+                    </tr>
+                </table>
+            </div>
+
+
+        </div>
+
+        <div class="toolsMenuContainer hidden">
+            <button class="normalButtonElement closeButton" onclick="toggleToolsMenu()"><svg><use href="#closeIcon"></use></svg></button>
+            <h2>Tools</h2>
+            <h3>Periodic Table Look up</h3>
+            <div class="balancingTableContainer">
+                <table class="table" id="balancingTable">
+                    <tr>
+                        <th>Swedish</th>
+                        <th>English</th>
+                        <th>Symbol</th>
+                        <th>Number</th>
+                        <th>Mass</th>
+                        <th>Type</th>
+                    </tr>
+                    <tr>
+                        <td><input type="text" placeholder="Väte" class="normalInputElement bright" id="tools_periodicTableLookUpNameSv" style="width: 13ch;" oninput="tools_updateValuesFromName(lang='sv')"></td>
+                        <td><input type="text" placeholder="Hydrogen" class="normalInputElement bright" id="tools_periodicTableLookUpNameEn" style="width: 13ch;" oninput="tools_updateValuesFromName(lang='en')"></td>
+                        <td><input type="text" placeholder="H" class="normalInputElement bright" id="tools_periodicTableSymbol" style="width: 10ch;" oninput="tools_updateValuesFromSymbol()"></td>
+                        <td><input type="number" placeholder="1" class="normalInputElement bright" id="tools_periodicTableNumber" style="width: 10ch;" step="1" oninput="tools_updateValuesFromNumber()"></td>
+                        <td><input type="number" placeholder="1.008" class="normalInputElement bright" id="tools_periodicTableWeight" style="width: 10ch;" readonly></td>
+                        <td><input type="text" placeholder="Reactive nonmetals" class="normalInputElement bright" id="tools_periodicTableType" style="width: 20ch;" readonly></td>
+
+                    </tr>
+                </table>
+            </div>
+            <br>
+            <div class="periodicTableToolContainer">
+                <h3>Periodic Table</h3>
+                <div class="periodicTableToolSettingsContainer">
+                    <h4>Periodic Table settings</h4>
+                    <div class="settingContainer">
+                        <label for="periodicTableDisplayWideView">Wide:</label>
+                        <input type="checkbox" name="" id="periodicTableDisplayWideView">
+                    </div>
+                    <div class="settingContainer">
+                        <label for="periodicTableDisplayShowAtomTypes">Color:</label>
+                        <input type="checkbox" name="" id="periodicTableDisplayShowAtomTypes" checked>
+                    </div>
+                </div>
+                <div class="periodicTableContainer notMarkableText">
+                    <div style="grid-column: 5; grid-row: 2;" class="periodicTableAtom atomType_unkown">
+                        <div class="atomNumberDisplay">Number</div>
+                        <div class="atomSymbolDisplay" style="font-size: 1rem;">Symbol</div>
+                        <div class="atomNumberDisplay">Name</div>
+                        <div class="atomNumberDisplay">Mass</div>
+                    </div>
+                    
+                </div>                
+            </div>
+
+        </div>
+
+        <div class="calculationLogContainer hidden">
+            <button class="normalButtonElement closeButton" onclick="toggleCalculationLogMenu()"><svg><use href="#closeIcon"></use></svg></button>
+            <h2>Calculations </h2>
+            <p>Calculations has a list of all calculations that have occurred since the last clear.</p>
+
+        </div>
+
+        <div class="helpContainer">
+            <button class="normalButtonElement closeButton" onclick="toggleHelp()"><svg><use href="#closeIcon"></use></svg></button>
+            <h2>Help</h2>
+            <p>Chemistry Calculator is a calculator for counting with simple stoichiometry. <a href="https://sites.google.com/student.tabyenskilda.se/ok-host/chemistrycalculator/documentation">Link to documentation.</a>
+            </p>
+            <p>
+                <h4>External resources</h4>
+                <ul>
+                    <li>Fonts: <a href="https://fonts.google.com/">Google Fonts</a></li>
+                    <li>Icons: <a href="https://fonts.google.com/icons">Google Fonts</a> (<a href="https://www.apache.org/licenses/LICENSE-2.0.html">License</a>)</li>
+                </ul>
+            </p>
+            <p>
+                <h4>Basic Calculations</h4>
+                <ul>
+                    <li><a href="https://en.wikipedia.org/wiki/Ratio">Ratio</a>: Determins how much there is of a substance given the amount of another.</li>
+                    <li><a href="https://en.wikipedia.org/wiki/Mass">Mass</a>: The weight of the whole substance. Messured in g.</li>
+                    <li><a href="https://en.wikipedia.org/wiki/Molar_mass">Molarmass</a>: The weight of a single part of the substance. Messured in g/mol.</li>
+                    <li><a href="https://en.wikipedia.org/wiki/Amount_of_substance">Substance amount</a>: The amount of the substance. Messured in mol.</li>
+                    <li><a href="https://en.wikipedia.org/wiki/Volume">Volume</a>: The space taken up by the substance. Messured in dm<sup>3</sup>.</li>
+                    <li><a href="https://en.wikipedia.org/wiki/Concentration">Concentration</a>: The amount of substance in a certain volume. Messured in mol/dm<sup>3</sup>.</li>
+                </ul>
+            </p>
+            <p>
+                <h4>Function Documentation</h4>
+                <ul>
+                    <li>Calculate (ctrl + shift + enter): The calculator fills in unknown data based on the data you entered. Be careful with entering data, if the data is wrong, the calculator can output may be incorrect! Filled-in cells have a <a class="aquaText">lightblue color</a>.</li>
+                    <li>Clear: Removes data in the cells. With "Calculated" selected, only data filled-in by the calculator is filled-in. With "All" selected, everything will be cleared.</li>
+                    <li>Add Column (ctrl + shift + k): Adds a column to the far right.</li>
+                    <li>Remove Column (ctrl + shift + l): Removes the far right column.</li>
+                    <li>Autofill molarmasses (ctrl + shift + m): Let the computer fill in the missing molarmasses.</li>
+                </ul>
+            </p>
+            <p>
+                <h4>Saving calculations</h4>
+                <ul>
+                    <li>Open (ctrl + shift + 1): Open a file by clicking the open button in the file menu. Note that it must be a json file and be supported by the calculator. Cells imported from a file has a <a class="greenText">green color</a></li>
+                    <li>Export (ctrl + shift + 2): To export file, click the export button in the file menu.</li>
+                </ul>
+            </p>
+            <p>
+                <h4>Balancing formulas</h4>
+                <ul>
+                    <li>Check if the formula is balanced: Click the "Check Balancing" text. If the formula is balanced, the text is green when hovering. If the formula is not balanced the ratio row turns red.</li>
+                    <li>View atom counts: Go to the formula menu.</li>
+                </ul>
+                <br>
+                <p>Functionallity limits: </p>
+                <ul>
+                    <li>The reaction must have <u>one</u> arrow</li>
+                    <li>Note that the formula is only balanced when the "Check Balancing" text is clicked or when a calculation is executed.</li>
+                </ul>
+
+            </p>
+            <p>
+                <h4>Other features</h4>
+                <ul>
+                    <li onclick="developerToolsContainer.classList.remove('hidden');">Developer Tools</li>
+                    <li>Exchange: Exchange is a feature that accounts for a percentage reacting. For normal calculations, the exchange is 100%. It only works, if there is <u>one</u> reaction arrow</li>
+                    <li>Colorization of formula units: The formula units are colored depending of if they are a <a class="reactantColor">reactant</a> (brown) or <a class="resultantColor">resultant</a>(green). This is automatically determined by the calculator and is only showed if hovering over.</li>
+                </ul>
+            </p>
+        </div>
+
+        <div class="changeLogContainer">
+            <button class="normalButtonElement closeButton" onclick="toggleChangeLog()"><svg><use href="#closeIcon"></use></svg></button>
+            <h2>Change Log</h2>
+            <p>
+                <h4>1.7</h4>
+                <ul>
+                    <li>Added equalibrium calculation</li>
+                    <li>Improved UI</li>
+                </ul>
+            </p>
+            <p>
+                <h4>1.6.3</h4>
+                <ul>
+                    <li>Resolved issues that incorrectly triggered validation errors</li>
+                    <li>Added full automation</li>
+                    <li>Improved UI</li>
+                </ul>
+            </p>
+            <p>
+                <h4>1.6.2</h4>
+                <ul>
+                    <li>Added periodic table to the tools container</li>
+                    <li>Improved UI</li>
+                    <li>Improved error handling</li>
+                </ul>
+            </p>
+            <p>
+                <h4>1.6.1</h4>
+                <ul>
+                    <li>Improved UI</li>
+                    <li>Added background blur</li>
+                </ul>
+            </p>
+            <p>
+                <h4>1.6</h4>
+                <ul>
+                    <li>Improved CSV exporting</li>
+                    <li>Added URL Param support</li>
+                    <li>Added limiting reactant support</li>
+                    <li>Added locking</li>
+                    <li>Improved UI</li>
+                    <li>Added Settings menu</li>
+                    <li>Added notes</li>
+                </ul>
+            </p>
+            <p>
+                <h4>1.5.2</h4>
+                <ul>
+                    <li>GUI Improvements.</li>
+                    <li>Added support for export/importing to text.</li>
+                    <li>Added support for exporting to CSV files.</li>
+                    <li>Added support for English elements.</li>
+                </ul>
+            </p>
+            <p>
+                <h4>1.5.1</h4>
+                <ul>
+                    <li>Small improvements.</li>
+                </ul>
+            </p>
+            <p>
+                <h4>1.4</h4>
+                <ul>
+                    <li>Added validation of values.</li>
+                    <li>Added energy information section.</li>
+                    <li>Added the Periodic Table Lookup function in the Tools menu.</li>
+                    <li>Added dark, light and blue themes.</li>
+
+                </ul>
+            </p>
+            <p>
+                <h4>1.3</h4>
+                <ul>
+                    <li>Added the exchange system.</li>
+                    <li>Added balancing check support.</li>
+                    <li>Added formula tab where more information about the formula is shown.</li>
+                </ul>
+            </p>
+            <p>
+                <h4>1.2</h4>
+                <ul>
+                    <li>Added calculation log</li>
+                    <li>Added functionality to store a calculation. Note that the calculation log does not persist.</li>
+                    <li>Improved the menu UI and overflow of the calculator.</li>
+                    <li>Added the chemistry formula in the calculations log.</li>
+                    <li>Added keyboard shortcuts; see the Help page.</li>
+
+                </ul>
+            </p>
+            <p>
+                <h4>1.1</h4>
+                <ul>
+                    <li>Added exchange functionality.</li>
+                    <li>Added functionality for determining which formula units are reactants.</li>
+                    <li>Added change log.</li>
+                </ul>
+            </p>
+        </div>
+
+        
+        
+        
+        
+        
+        
+        
+        <footer id="footerInformationAndButtonPanel">
+            
+            <div class="contentButtonPanel notMarkableText">
+                <button class="fileMenuContainerExpander hidden" title="Open and export calculations to a file">File</button>
+                <button class="formulaMenuContainerExpander" title="Get information about the current reaction">Formula</button>
+                <button class="toolsMenuContainerExpander" title="Handy tools, for example a periodic table">Tools</button>
+                <button class="calculationLogContainerExpander" title="Se a log of all calculations that have occured during the execution since the last clear">Calculations</button>
+                <button class="helpContainerExpander" title="Documentation">Help</button>
+                <button class="changeLogContainerExpander" title="Changes through out the updates">Change Log</button>
+            </div>
+            <div class="footerContainer notMarkableText">
+                <p>Version: 1.7</p>
+                <p class="displayOneFile tryshow">Onefile Webversion</p>
+                <p>© Oscar Kristensson 2024</p>
+                <!-- 
+                    <div class="themeSelectorContainer">
+                        <label for="themeSelector">Theme: </label>
+                        <select name="Theme Selector" class="themeSelector" id="themeSelector">
+                            <option value="dark-theme">Dark</option>
+                            <option value="light-theme">Light</option>
+                            <option value="blue-theme" style="color: hsl(240, 100%, 75%);">Blue</option>
+                        </select>
+                    </div>
+                 -->
+            </div>
+            
+        </footer>
+        
+        </div>
+
+        <div class="backgroundContainer"></div>
+    </body>
+</html>
+
+

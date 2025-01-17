@@ -1,0 +1,1605 @@
+
+:root{
+    --background-color-dark0: rgb(10, 10, 10);
+    --background-color-dark1: rgb(20, 20, 20);
+    --background-color-dark2: rgb(30, 30, 30);
+    --background-color-dark3: rgb(40, 40, 40);
+    --background-color-dark4: rgb(50, 50, 50);
+
+    --background-color-floatingBox: rgb(20, 20, 20, 0.9);
+
+
+    --color-light1: white;
+    --color-light2: hsl(0, 0%, 80%);
+
+    --low-emphasis-color: hsl(0, 0%, 50%);
+
+    --red-button-color: hsl(0, 100%, 25%);
+    --red-button-hover-color: hsl(0, 100%, 15%);
+
+    --color-autofilled-text: rgb(0, 255, 255);
+    --loadedFromSaveColor: lightgreen;
+    --color-balanced-formula: darkgreen;
+    --color-formula-not-balanced: hsl(0, 100%, 27%);
+
+    --color-button-text: var(--color-light1);
+
+    --color-unvalid: red;
+    --color-error: var(--color-unvalid);
+    --color-warning: yellow;
+    --color-info: green;
+
+    --color-reactant: hsl(0, 59%, 20%);
+    --color-resultant: hsl(80, 61%, 20%);
+
+    --color-limiting-reactant: hsl(60, 100%, 50%);
+    --color-not-used-reactant: gray;
+
+
+    --background-color-error: hsl(0, 100%, 15%);
+    --background-color-warning: hsl(60, 100%, 15%);
+    --background-color-info: hsl(120, 100%, 15%);
+
+    --color-link: rgb(138, 180, 248);
+
+
+    
+
+}
+
+a:link{
+    color: var(--color-link);
+}
+
+a:visited{
+    color: var(--color-link);
+}
+
+.pageContainer{
+    transition: filter 250ms ease-in-out;
+}
+
+.changingThemeAnimation{
+    transition: all 1000ms ease-in-out;
+}
+
+.light-theme{
+    --background-color-dark3: rgb(245, 245, 245);
+    --background-color-dark2: rgb(235, 235, 235);
+    --background-color-dark1: rgb(225, 225, 225);
+    --background-color-dark0: rgb(215, 215, 215);
+    --background-color-dark4: rgb(205, 205, 205);
+
+    --background-color-floatingBox: rgb(225, 225, 225, 0.9);
+
+
+    --color-light1: rgb(0, 0, 0);
+    --color-light2: hsl(0, 0%, 40%);
+
+
+    --red-button-color: hsl(0, 70%, 45%);
+    --red-button-hover-color: hsl(0, 70%, 45%);
+
+    --color-autofilled-text: hsl(180, 100%, 30%);
+    --loadedFromSaveColor: hsl(120, 100%, 30%);
+    --color-balanced-formula: lightgreen;
+    --color-formula-not-balanced: hsl(0, 100%, 73%);
+
+    --color-reactant: hsl(0, 59%, 80%);
+    --color-resultant: hsl(80, 61%, 80%);
+
+    --color-button-text: white;
+
+    --color-link: blue;
+
+    --background-color-error: hsl(0, 100%, 85%);
+    --background-color-warning: hsl(60, 100%, 85%);
+    --background-color-info: hsl(120, 100%, 85%);
+
+
+    
+
+
+}
+
+/* Old light */
+.old-light-theme{
+    --background-color-dark0: rgb(245, 245, 245);
+    --background-color-dark1: rgb(235, 235, 235);
+    --background-color-dark2: rgb(225, 225, 225);
+    --background-color-dark3: rgb(215, 215, 215);
+
+    --color-light1: rgb(0, 0, 0);
+    --color-light2: hsl(0, 0%, 40%);
+
+
+    --red-button-color: hsl(0, 100%, 75%);
+    --red-button-hover-color: hsl(0, 100%, 85%);
+
+    --color-autofilled-text: hsl(180, 100%, 30%);
+    --loadedFromSaveColor: hsl(120, 100%, 30%);
+    --color-balanced-formula: lightgreen;
+    --color-formula-not-balanced: hsl(0, 100%, 73%);
+
+    --color-reactant: hsl(0, 59%, 80%);
+    --color-resultant: hsl(80, 61%, 80%);
+}
+
+
+.blue-theme{
+    --background-color-dark1: hsl(240, 100%, 92%);
+    --background-color-dark2: hsl(240, 100%, 88%);
+    --background-color-dark3: hsl(240, 100%, 84%);
+
+    --color-light1: rgb(0, 0, 0);
+    --color-light2: hsl(0, 0%, 40%);
+
+    --red-button-color: hsl(240, 100%, 75%);
+    --red-button-hover-color: hsl(240, 100%, 85%);
+
+    --color-autofilled-text: hsl(180, 100%, 30%);
+    --loadedFromSaveColor: hsl(120, 100%, 30%);
+    --color-balanced-formula: lightgreen;
+    --color-formula-not-balanced: hsl(0, 100%, 73%);
+
+    --color-reactant: hsl(0, 59%, 80%);
+    --color-resultant: hsl(80, 61%, 80%);
+
+
+
+}
+
+
+body{
+    background-color: var(--background-color-dark1);
+    color: var(--color-light1);
+    font-family: 'Roboto', sans-serif;
+    font-weight: 300;
+}
+
+/* Calculator GUI */
+
+.calculatorAttributesContainer{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-bottom: 1rem;
+    padding: 1rem;
+}
+
+.calculatorAttributeContainer{
+    margin: 1rem;
+    display: flex;
+    flex-direction: column;
+
+}
+
+.attributeInput.checkBalansing{
+    color: var(--background-color-dark3);
+}
+
+.calculatorContainer{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.tableContainer{
+    padding: 0.5cm;
+    overflow: auto;
+}
+
+
+.table th{
+    padding: 0.5rem;
+    text-align: left;
+    user-select: none; /* Standard syntax */
+
+}
+
+.table{
+    border-collapse: collapse;
+}
+
+.table th .name,
+.table.showMoreInformation th .quantity,
+.table th .unit{
+    display: none;
+}
+
+.table.showMoreInformation th .name,
+.table.showMoreInformation th .unit{
+    display: inline;
+
+}
+
+.table.showMoreInformation th .quantity{
+    display: none;
+}
+
+
+/* Calculation Modes */
+
+body .equilibriumCalculationMode{
+    display: none;
+}
+
+body.equilibriumCalculationMode .equilibriumCalculationMode {
+    display: block;
+}
+
+body.equilibriumCalculationMode table .equilibriumCalculationMode{
+    display: table-row;
+}
+
+#geogebraEquationLink {
+    display: initial;
+}
+
+#geogebraEquationLink.hidden {
+    display: none;
+}
+
+
+
+
+body .normalCalculationMode{
+    display: none;
+}
+
+body.normalCalculationMode .normalCalculationMode {
+    display: inherit;
+}
+
+
+
+
+
+.table tr{
+    color: var(--color-light1);
+}
+
+.table th .quantity,
+.table th .unit{
+    margin-left: 1ch;
+    margin-right: 1ch;
+}
+
+.table.widenInputsOnFocus td:focus-within input{
+    width: 20ch;
+}
+
+@media (pointer: coarse) {
+    .table td input {
+        outline: solid var(--background-color-dark4) 1px;
+    }
+
+    .table th .name {
+        display: none;
+    }
+
+    .table th .unit {
+        display: none;
+    }
+}
+
+.table tr:nth-child(even){
+    background-color: var(--background-color-dark2);
+    
+    
+}
+
+.operatorSelector{
+    background-color: var(--background-color-dark1);
+    color: var(--color-light1);
+    border: none;
+    text-align: center;
+    
+}
+
+.operatorSelector option{
+    text-align: center;
+}
+
+.operatorSelector.lockedDuringCalculation{
+    opacity: 1;
+}
+
+@media (hover: hover) and (pointer: fine) {
+.operatorSelector.lockedDuringCalculation:hover{
+    color: var(--low-emphasis-color);
+}
+}
+
+
+
+
+.table.notbalanced .tableDataInput.ratioInput{
+    background-color: var(--color-formula-not-balanced);
+
+}
+
+.table .tableDataInput.limitingReactant{
+    color: var(--color-limiting-reactant);
+}
+
+.table .tableDataInput.reactantNotUsed{
+    color: var(--color-not-used-reactant);
+}
+
+/* Calculator Attributes */
+
+.attributeInput{
+    background-color: transparent;
+    color: var(--color-light1);
+    border-color: transparent;
+    text-align: right;
+    align-self: center;
+    justify-self: center;
+    transition: all 500ms ease-in-out;
+    border-width: 0.01rem;
+
+}
+
+.attributeInput.exchange{
+    width: 4rem;
+    text-align: center;
+}
+
+#checkBalansingParagraph{
+    transition: all 500ms ease-in-out;
+
+}
+
+#checkBalansingParagraph:hover{
+    cursor: pointer;
+
+}
+
+#checkBalansingParagraph.notbalanced{
+    background-color: var(--color-formula-not-balanced);
+}
+
+#checkBalansingParagraph.balanced:hover{
+    background-color: var(--color-balanced-formula);
+}
+
+#checkBalansingParagraph.balanced{
+    background-color: none;
+}
+
+@media (hover: hover) and (pointer: fine) {
+.attributeInput:hover{
+    background-color: var(--background-color-dark2);
+    border-color: var(--color-light2);
+    
+}
+}
+
+
+/* Chemistry Input Design */
+
+.chemistryInputContainer{
+    border: none;
+    min-height: 1rem;
+    min-width: 1rem;
+}
+
+
+
+.chemistryInputElement{
+    display: none;
+    background-color: var(--background-color-dark2);
+    color: var(--color-light1);
+    border: none;
+    
+}
+
+
+.chemistryInputContainer.editing{
+    background-color: var(--background-color-dark2);
+}
+
+.chemistryInputContainer.editing .chemistryDisplayElement{
+    display: none;
+}
+
+.chemistryInputContainer .chemistryDisplayElement{
+    display: block;
+    text-align: center;
+    transition: all 500ms ease-in-out;
+    font-weight: 300;
+
+}
+
+
+.chemistryInputContainer:hover .chemistryDisplayElement.reactant{
+    background-color: var(--color-reactant);
+}
+
+.chemistryInputContainer:hover .chemistryDisplayElement.resultant{
+    background-color: var(--color-resultant);
+}
+
+.chemistryInputContainer.editing .chemistryInputElement{
+    display: block;
+}
+
+.chemistryInputContainer .chemistryInputElement{
+    display: none;
+}
+
+/* Table input design */
+.tableDataInput{
+    background-color: transparent;
+    color: var(--color-light1);
+    border: none;
+    font-size: 0.8rem;
+    font-family: "Roboto Mono", monospace;
+    width: 2cm;
+    transition: all 500ms ease-in-out;
+    
+}
+
+@media (hover: hover) and (pointer: fine) {
+.tableDataInput:hover{
+    background-color: var(--background-color-dark3);
+}
+}
+
+.tableDataInput.unvalidValue{
+    background-color: var(--red-button-color);
+}
+
+
+.tableDataInput.autofilled{
+    color: var(--color-autofilled-text);
+}
+
+.tableDataInput.loadedFromSave{
+    color: var(--loadedFromSaveColor);
+}
+
+.tableDataInput.ratioInput{
+    text-align: center;
+}
+
+.tableDataRatioColons{
+    text-align: center;
+}
+
+.table.singleFormulaUnit .tableRatioRow{
+    display: none;
+}
+
+
+
+/* Button Panel */
+
+.buttonPanelContainer{
+    padding: 0.5cm;
+    display: flex;
+    flex-direction: column;
+}
+
+.buttonPanelContainer button{
+    background-color: var(--red-button-color);
+    padding: 0.25rem;
+    border-radius: 0.25rem;
+    border: none;
+    cursor: pointer;
+    margin: 0.5rem;
+    font-size: 0.8rem;
+    transition: box-shadow 250ms ease-in-out;
+    transition: background-color 250ms ease-in-out;
+    transition: all 250ms ease-in-out;
+    color: var(--color-button-text);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+
+.buttonPanelContainer.small button{
+    font-size: 0;
+}
+
+@media (hover: hover) and (pointer: fine) {
+.buttonPanelContainer button:hover{
+    background-color: var(--red-button-hover-color);
+    box-shadow: 1ch 1ch 1ch var(--background-color-dark0);
+
+}
+}
+
+.buttonPanelContainer.small button.textButton{
+    display: none;
+}
+
+.buttonPanelContainer.small .clearButtonContainer{
+    display: none;
+}
+
+.clearButtonContainer{
+    display: flex;
+}
+
+.clearButtonContainer select{
+    padding: 0.25rem;
+    border-radius: 0.25rem;
+    border: none;
+    cursor: pointer;
+    margin: 0.5rem;
+    font-size: 0.8rem;
+    transition: all 100ms ease-in-out;
+    background-color: var(--red-button-color);
+    color: var(--color-button-text);
+    margin-right: none;
+    border: none;
+}
+
+
+.buttonIcon{
+    height: 2rem;
+}
+
+
+/* Heading Design */
+.calculatorHeadingContainer{
+    display: flex;
+    justify-content: center;
+}
+
+
+/* Footer */
+
+footer {
+    font-family: 'Roboto Mono', monospace;
+    font-size: small;
+    color: var(--low-emphasis-color);
+
+    position: sticky;
+    bottom: 0;
+    left: 0;
+    z-index: 4;
+    padding: 2rem;
+    border-top-left-radius: 1rem;
+    border-top-right-radius: 1rem;
+
+    background-color: var(--background-color-floatingBox);
+    transition: all 500ms ease-in-out;
+    backdrop-filter: blur(10px);
+
+
+
+    
+}
+
+.footerContainer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.footerContainer p{
+    margin: 1rem
+}
+
+
+/* Help */
+.contentButtonPanel{
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.contentButtonPanel button{
+    background-color: transparent;
+    border: none;
+    font-size: 1rem;
+    color: var(--color-light1);
+    transition: all 200ms ease-in-out;
+    cursor: pointer;
+}
+
+.contentButtonPanel button.menuOpen{
+    text-decoration: underline;
+}
+
+@media (hover: hover) and (pointer: fine) {
+.contentButtonPanel button:hover{
+    text-decoration: underline;
+    color: var(--color-light2);
+}
+}
+
+
+
+
+.helpContainer{
+    background-color: var(--background-color-dark2);
+    padding: 1rem;
+    margin: 1rem;
+    display: none;
+    position: relative;
+}
+
+.helpContainer li{
+    margin-bottom: 1rem;
+}
+
+.helpContainer h4{
+    font-size: 1rem;
+    margin-top: 3rem;
+
+}
+.helpContainer h2{
+    font-weight: lighter;
+}
+
+.helpContainer.shown {
+    display: block;
+
+}
+
+.helpContainer .aquaText{
+    color: var(--color-autofilled-text);
+}
+
+.helpContainer .greenText{
+    color: var(--color-autofilled-text);
+}
+
+
+.helpContainer:hover .reactantColor{
+    background-color: var(--color-reactant);
+}
+
+.helpContainer:hover .resultantColor{
+    background-color: var(--color-resultant);
+}
+
+/* Formula Container */
+.formulaMenuContainer{
+    background-color: var(--background-color-dark2);
+    padding: 1rem;
+    margin: 1rem;
+    display: none;
+    position: relative;
+}
+
+.formulaMenuContainer .atomCircle{
+    width: 1rem;
+    height: 1rem;
+    border-radius: 0.5rem;
+}
+
+.formulaMenuContainer .atomCircle.carbon{
+    background-color: hsl(0, 0%, 25%);
+}
+
+.formulaMenuContainer .atomCircle.oxygen{
+    background-color: red;
+}
+
+.formulaMenuContainer .atomCircle.hydrogen{
+    background-color: hsl(0, 0%, 75%);
+}
+
+.formulaMenuContainer .atomCircle.nitrogen{
+    background-color: lightblue;
+}
+
+.formulaMenuContainer .atomCircle.chlorine{
+    background-color: green;
+}
+
+.formulaMenuContainer .atomCircle.fluorine{
+    background-color: orange;
+}
+
+.formulaMenuContainer .atomCircle.bromine{
+    background-color: darkblue;
+}
+
+.formulaMenuContainer .atomCircle.iodine{
+    background-color: hsl(300, 100%, 15%);
+}
+
+.formulaMenuContainer .atomCircle.phosphorus{
+    background-color: purple;
+}
+
+.formulaMenuContainer .atomCircle.sulfur{
+    background-color: yellow;
+}
+
+
+@keyframes unkownAtomCircleAnimation {
+    0%{
+        background-color: red;
+    }
+    25%{
+        background-color: green;
+    }
+
+    50%{
+        background-color: blue;
+    }
+
+    75%{
+        background-color: yellow;
+    }
+
+    100%{
+        background-color: red;
+    }
+    
+    
+}
+
+.formulaMenuContainer .atomCircle.unkown{
+    animation: unkownAtomCircleAnimation 5s ease infinite forwards;
+    /*background: linear-gradient(to right, red, green, blue);*/
+}
+
+
+.formulaMenuContainer li{
+    margin-bottom: 1rem;
+}
+
+.formulaMenuContainer h4{
+    font-size: 1rem;
+    margin-top: 3rem;
+
+}
+.formulaMenuContainer h2{
+    font-weight: lighter;
+}
+
+.formulaMenuContainer h3{
+    font-weight: lighter;
+}
+
+
+.formulaMenuContainer.shown {
+    display: block;
+
+}
+
+.formulaMenuContainer .table td{
+    text-align: center;
+}
+.formulaMenuContainer .table tr.notbalanced{
+    background-color: var(--color-formula-not-balanced);
+}
+
+
+.formulaMenuContainer_currentFormulaContainer{
+    display: flex;
+    flex-direction: column;
+}
+
+
+
+.formulaMenuContainer_currentFormula{
+    display: inline;
+    margin: 0.5rem;
+}
+
+.formulaMenuContainer_currentFormula .moleculeContainer{
+    display: flex;
+    margin-left: 1ch;
+    margin-right: 1ch;
+}
+
+.formulaMenuContainer_currentFormula.hideCoeffcient .coefficent{
+    display: none;
+}
+
+.moleculeContainer .coefficent{
+    margin-right: 1ch;
+    display: block;
+}
+
+
+
+/* toolsMenuContainer */
+.toolsMenuContainer{
+    background-color: var(--background-color-dark2);
+    padding: 1rem;
+    margin: 1rem;
+    display: none;
+    position: relative;
+}
+
+.toolsMenuContainer li{
+    margin-bottom: 1rem;
+}
+
+.toolsMenuContainer h4{
+    font-size: 1rem;
+    margin-top: 3rem;
+
+}
+.toolsMenuContainer h2{
+    font-weight: lighter;
+}
+
+.toolsMenuContainer h3{
+    font-weight: lighter;
+}
+
+
+.toolsMenuContainer.shown {
+    display: block;
+}
+
+.toolsMenuContainer .normalButtonElement{
+    display: flex;
+}
+
+.toolsMenuContainer .normalInputElement.autofilled{
+    color: var(--color-autofilled-text);
+}
+
+.toolsMenuContainer .normalInputElement.unvalid{
+    color: var(--color-unvalid);
+}
+
+/* Change Log */
+.changeLogContainer{
+    background-color: var(--background-color-dark2);
+    padding: 1rem;
+    margin: 1rem;
+    display: none;
+    position: relative;
+}
+
+.changeLogContainer.shown{
+    display: block;
+}
+
+
+.changeLogContainer li{
+    margin-bottom: 1rem;
+}
+
+.changeLogContainer h4{
+    font-size: 1rem;
+    margin-top: 3rem;
+
+}
+.changeLogContainer h2{
+    font-weight: lighter;
+}
+
+
+
+
+
+/*onefileMacro
+.displayOneFile.tryshow{
+    display: block;
+}
+onefileMacro*/
+
+
+
+.displayOneFile{
+    display: none;
+}
+
+
+/* Energy information */
+.energyInformationTableDisplayElement.unknown{
+    color: var(--low-emphasis-color);
+}
+
+.energyInformationTableDisplayElement{
+    margin-left: 4ch;
+    font-weight: 300;
+
+}
+
+
+/* Normal Styles */
+
+.normalInputElement{
+    background-color: var(--background-color-dark2);
+    border-width: 0;
+    color: var(--color-light1);
+    outline: none;
+    font-family: 'Roboto Mono', monospace;
+    
+}
+
+.normalInputElement.bright{
+    background-color: var(--background-color-dark3);
+
+    
+}
+
+.normalTextAreaElement,
+advanced-textarea::part(input) {
+    background-color: var(--background-color-dark3);
+    color: var(--color-light1);
+}
+
+.normalTextAreaElement.oneline{
+    height: 1rem;
+    
+}
+
+body{
+    position: relative;
+    height: 100vh;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+
+.pageContainer{
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    width: 100%;
+    z-index: 1;
+
+}
+
+
+
+/* Bottom Container */
+
+.backgroundContainer{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.closeButton{
+    position: absolute;
+    display: flex;
+    right: 1rem;
+    top: 1rem;
+    padding: 0;
+    font-size: 2rem;
+    width: 2rem;
+    height: 2rem;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--background-color-dark3) !important;
+}
+
+
+.normalButtonElement{
+    background-color: var(--red-button-color);
+    padding: 0.25rem;
+    border-radius: 0.25rem;
+    border: none;
+    cursor: pointer;
+    margin: 0.5rem;
+    font-size: 0.8rem;
+    transition: box-shadow 250ms ease-in-out;
+    transition: background-color 250ms ease-in-out;
+    transition: all 250ms ease-in-out;
+    color: var(--color-light1);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.messagebox{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 10cm;
+    height: 10cm;
+    /*background-color: rgba(0, 0, 0, 0.605);*/
+    
+}
+
+.normalMessageBox{
+    position: fixed;
+    width: max-content;
+    height: max-content;
+    z-index: 3;
+}
+
+.normalMessageBox.hide{
+    display: none;
+}
+
+.normalMessageBox.color{
+    background-color: var(--background-color-dark2);
+    border-radius: 0.5rem;
+    padding: 1rem;
+    box-shadow: 0.5rem 0.5rem 0.5rem var(--background-color-dark0);
+}
+
+.normalMessageBox.center{
+    transform: translate(-50%, -50%);
+}
+
+.normalMessageBox.middleOfScreen{
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.normalMessageBox.scrollable{
+    overflow-y: auto;
+    
+    max-height: 100vh;
+}
+
+.screenBox{
+    display: flex;
+    position: fixed;
+    top: 50vh;
+    left: 50vw;
+    transform: translate(-50%, -50%);
+
+    background-color: var(--background-color-dark2);
+    border-radius: 1rem;
+    z-index: 9999;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.screenBox.hidden{
+    display: none;
+}
+
+#exportCSVDialogContainerScreenBox{
+    min-width: 300px;
+}
+
+.exportCSVDialogContainer{
+    position: relative;
+    width: 100%;
+    height: 100%;
+    border-radius: 1rem;
+    box-shadow: 1rem 1rem 0.5rem var(--background-color-dark0);
+}
+
+
+
+.exportCSVDialogContainer .mainGUIContainer{
+    margin: 1rem;
+    margin-right: 4rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+}
+
+.exportCSVDialogContainer .mainGUIContainer h4{
+    margin-top: 2rem;
+}
+
+
+.exportCSVDialogContainer .closeButton{
+    position: absolute;
+    right: 0.5rem;
+    top: 0.5rem;
+}
+
+.exportCSVDialogContainer input{
+    align-items: center;
+}
+
+
+
+.blankLink{
+    text-decoration: inherit;
+}
+
+
+
+.buttonPanelContainer.dev.hidden{
+    display: none;
+}
+
+.buttonPanelContainer.dev{
+    background-color: var(--background-color-dark3);
+    border-radius: 1rem;
+}
+
+/* Status bar*/
+
+.statusContainer{
+    width: max-content;
+    position: fixed;
+    height: max-content;
+    right: 1rem;
+    top: 1rem;
+    z-index: 100;
+    background-color: var(--background-color-dark2);
+    border-radius: 1rem;
+    padding: 0.25rem;
+    display: flex;
+    flex-direction: column;
+
+}
+
+.statusContainer .expander{
+    display: none;
+}
+
+.statusContainer .icon{
+    width: 2.5rem;
+}
+
+.statusContainer .iconContainer{
+    transition: all 250ms ease-in-out;
+}
+
+@media (hover: hover) and (pointer: fine) {
+.statusContainer .iconContainer.clickable:hover{
+    transform: translate(-0.5ch);
+}
+}
+
+.lockIconContainer .lockIcon.locked{
+    display: block;
+}
+
+.lockIconContainer.unlocked .lockIcon.unlocked{
+    display: block;
+}
+
+.lockIconContainer .lockIcon.unlocked{
+    display: none;
+}
+
+.lockIconContainer.unlocked .lockIcon.locked{
+    display: none;
+}
+
+#errorMessageIcon.info .errorMessageIcon{
+    color: var(--color-info);
+}
+
+#errorMessageIcon.warning .errorMessageIcon{
+    color: var(--color-warning);
+}
+#errorMessageIcon.error .errorMessageIcon{
+    color: var(--color-error);
+}
+
+#calculationModeSelectorButtonContainer #arrowIconPath{
+    transition: all 250ms ease-in-out;
+}
+
+#calculationModeSelectorButtonContainer:hover #arrowIconPath{
+    transform: translateX(-25%);
+}
+
+#calculationModeSelectorButtonContainer .themeSelectorContainer{
+    display: none;
+    transform: translate(-100%, -100%);
+    position: absolute;
+}
+
+#calculationModeSelectorButtonContainer:hover .themeSelectorContainer{
+    display: block;
+}
+
+
+.settingsIcon{
+    transform: rotate(0deg);
+    transition: all 250ms ease-in-out;
+}
+
+@media (hover: hover) and (pointer: fine) {
+.settingsIcon:hover{
+    transform: rotate(-45deg);
+    
+}
+}
+
+
+#themeSelectorButtonContainer .themeSelectorContainer{
+    display: none;
+    transform: translate(-100%, -100%);
+    position: absolute;
+}
+
+#themeSelectorButtonContainer:hover .themeSelectorContainer{
+    display: block;
+}
+
+#themeSelectorButtonContainer .icon{
+    z-index: 4;
+}
+
+.themeSelector{
+    background-color: var(--background-color-dark2);
+    padding: 0.2rem;
+    color: var(--low-emphasis-color);
+    border-radius: 0.2rem;
+    outline: none;
+
+}
+
+.themeSelector option{
+    display: block;
+}
+
+.themeSelector option{
+    outline: none;
+    border-radius: 0.2rem;
+    background-color: var(--background-color-dark2);
+    transition: all 500ms ease-in-out;
+}
+
+@media (hover: hover) and (pointer: fine) {
+.themeSelector option:hover{
+    background-color: var(--background-color-dark3);
+}
+}
+
+.themeSelector:focus {
+    border-color: #ffffff;
+    outline: none;
+    box-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
+}
+
+.themeSelector::selection{
+    color: var(--color-light2);
+
+}
+
+
+    
+.notMarkableText{
+    user-select: none; /* Standard syntax */
+    -webkit-user-select: none; /* Safari */
+    -moz-user-select: none; /* Firefox */
+    -ms-user-select: none; /* Internet Explorer/Edge */
+}
+
+
+.settingsContainer{
+    display: flex;
+    position: relative;
+    min-width: 30vw;
+    min-height: 30vh;
+    flex-direction: column;
+}
+
+
+.settingsContainer h3, h4{
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.settingsContainer .singleSettingsContainer{
+    display: flex;
+    margin-bottom: 1rem;
+    
+}
+
+@media (min-aspect-ratio: 9/32) and (max-aspect-ratio: 9/16) {
+    .normalMessageBox.mobileOptimization{
+        position: fixed;
+        width: 100vw;
+        height: 100vh;
+        padding: 2rem;
+        margin: 2rem;
+        border-radius: 0;
+        z-index: 1000;
+
+    }
+
+    .settingsContainer .closeButton{
+        right: 6rem;
+    }    
+    
+    .notesContainer .closeButton{
+        right: 8rem;
+    }
+
+
+
+    button {
+        min-height: 3rem;
+        min-width: 3rem;
+
+    }
+
+    .buttonPanelContainer{
+        flex-wrap: wrap;
+        flex-direction: row;
+        justify-content: center;
+    }
+
+    input[type="checkbox"]{
+        scale: 1.5;
+    }
+
+    .statusContainer{
+        opacity: 0.9;
+        transform: translate(85%);
+        transition: opacity 500ms ease-in-out;
+        transition: transform 500ms ease-in-out;
+    }
+
+    .statusContainer:hover{
+        opacity: 1;
+        transform: translate(0%);
+    }
+
+    .statusContainer .expander{
+        display: block;
+        position: fixed;
+        right: 1.5rem;
+        transform: translateY(50%) scaleX(-1) translateX(-1rem);
+        border-radius: 0.5rem;
+        background-color: var(--background-color-dark2);
+        z-index: 4;
+        padding-left: 1rem;
+        transition: all 1000ms ease-in-out;
+    }
+
+    .statusContainer:hover .expander{
+        transform: translateY(50%) translateX(8rem) scaleX(1);
+        border-radius: 0.5rem;
+        background-color: var(--background-color-dark2);
+        z-index: 4;
+        padding-left: 1rem;
+    }
+}
+
+
+
+
+
+
+.notesContainer{
+    width: 80vw;
+    min-height: 40vh;
+    height: 100%;
+    max-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.notesTextArea{
+    display: flex;
+    flex: 1;
+    width: 100%;
+    margin: 0.5rem;
+    overflow-y: scroll;
+    background-color: var(--background-color-dark3);
+
+}
+
+
+.errorMessagesContainer{
+    display: flex;
+    justify-content: center;
+    margin: 1rem;
+    padding: 1rem;
+    background-color: var(--background-color-dark2);
+    flex-direction: column;
+
+}
+
+.errorMessagesContainer .message{
+    padding: 1rem;
+    border-radius: 0.5rem;
+    margin: 1rem;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    min-width: 50vw;
+    max-width: 90vw;
+}
+
+.errorMessagesContainer h2{
+    font-weight: lighter;
+}
+
+.errorMessagesContainer .message .heading{
+    margin-right: 2ch;
+    font-weight: 500;
+}
+
+.errorMessagesContainer .message .number{
+    margin-left: 2ch;
+}
+
+.errorMessagesContainer .message.error{ background-color: var(--background-color-error); }
+.errorMessagesContainer .message.warning{ background-color: var(--background-color-warning); }
+.errorMessagesContainer .message.info{ background-color: var(--background-color-info); }
+
+
+.errorMessagesContainer.hide{
+    display: none;
+
+}
+
+.errorMessagesContainer .resolveButton svg{
+    width: 2rem;
+    height: 2rem;
+    transition: all 250ms ease-in-out;
+}
+
+.errorMessagesContainer .resolveButton:hover svg path{
+    transform: scaleY(1.5) translateY(10%);
+}
+
+.errorMessagesContainer .resolveButton svg path{
+    transition: transform 250ms ease-in-out;
+}
+
+.errorMessagesContainer .resolveButton:hover svg{
+    filter: brightness(0.7);
+    cursor: pointer;
+
+    
+}
+
+
+.errorMessagesContainer .resolveButton{
+    width: 1rem;
+    height: 1rem;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    flex: 1;
+    transition: transform 250ms ease-in-out;
+}
+
+.errorMessagesContainer .resolveButton:hover{
+    transform: translateX(0.1ch) translateY(0.1rem);
+}
+
+.hiddenContainer{
+    display: none;
+}
+
+
+.balancingTableContainer{
+    overflow-x: auto;
+    max-width: 100%;
+}
+
+
+.periodicTableToolSettingsContainer {
+    display: flex;
+    flex-direction: column;
+    padding: 0.5rem;
+    margin: 0.5rem;
+    margin-bottom: 1rem;
+    background-color: var(--background-color-dark3);
+    border-radius: 0.5rem;
+}
+
+
+.periodicTableToolSettingsContainer h4{
+    margin-top: 0.5rem;
+}
+
+.informationTable{
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+}
+
+.informationTable td{
+    justify-content: center;
+
+}
+
+.informationTable tr td:nth-child(1){
+    padding-right: 1ch;
+}
+
+.equilibriumConstantContainer .normalInputElement.autofilled{
+    color: var(--color-autofilled-text);
+
+}
+
+.equilibriumConstantContainer{
+    text-align: left;
+}
+
+
+.equilibriumConstantContainer:not(:nth-child(1)){
+    margin-top: 0.5rem;
+}
+
+.showHideElement.hide{
+    display: none;
+}
+
+/* Math CSS */
+
+.mathContainer{
+    display: flex;
+    align-items: center;
+
+}
+
+.mathContainer .mathSymbol input{
+    width: 8ch;
+}
+
+.mathContainer .mathSymbol {
+    margin-right: 1ch;
+}
+
+.mathContainer .mathDivisionOperator{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.mathContainer .mathDivisionOperator .mathSymbolDividerLine{
+    background-color: var(--color-light1);
+    height: 0.01rem;
+    width: 100%;
+    min-width: 4ch;
+    margin-top: 0.2rem;
+    margin-bottom: 0.2rem;
+}
+
+.mathContainer .mathDivisionOperator .mathSymbol{
+    margin-left: 0.5ch;
+    margin-right: 0.5ch;
+}
+
+
+
+/* Acid and Base reaction options */
+
+.protolysisFormulaMenuContainer{
+    display: none;
+}
+
+body.protolysisReaction .protolysisFormulaMenuContainer{
+    display: inherit;
+}
+
+.protolysisFormulaMenuContainer .shortNumberInput{
+    width: 8ch;
+}
+
+.protolysisFormulaMenuContainer .optionContainer{
+    margin-bottom: 0.5rem;
+}
+
+.protolysisFormulaMenuContainer .normalInputElement.autofilled{
+    color: var(--color-autofilled-text);
+}
+
+.acidConstantInputContainer{
+    display: none;
+}
+
+body.acidProtolysisReaction .acidConstantInputContainer{
+    display: inherit;
+}
+
+.baseConstantInputContainer{
+    display: none;
+}
+
+body.baceProtolysisReaction .baseConstantInputContainer{
+    display: inherit;
+}
