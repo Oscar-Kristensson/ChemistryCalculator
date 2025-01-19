@@ -3,7 +3,7 @@ let calculations = []
 let calculationLogDividers = []
 
 
-
+const calculationsContainer = document.getElementById("calculationMenuContainer");
 
 
 class Calculation{
