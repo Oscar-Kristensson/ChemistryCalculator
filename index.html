@@ -142,19 +142,17 @@
         <div class="pageContainer">
 
 
-
+<!--  
         <header class="calculatorHeadingContainer">
             <h1 class="calculatorHeadingElement notMarkableText">Chemistry Calculator</h1>
         </header>
-
+    -->
 
 
         <main class="mainContainer">
-            <!-- Calculator GUI -->
-            <div >
-
+            <div class="left-nav-bar notMarkableText">
             </div>
-            <div class="calculatorGUIContainer">
+            <!-- Calculator GUI -->
                 <div class="calculatorContainer">
                     <div class="tableContainer">
                         <table class="table" id="table">
@@ -288,9 +286,9 @@
                     
                 </div>
 
-            </div>
 
-        
+
+
         </main>
 
         <div class="errorMessagesContainer hide">
@@ -309,7 +307,7 @@
 
 
 
-        <div class="fileMenuContainer hidden">
+        <div class="fileMenuContainer hidden" id="fileMenuContainer">
             <button class="closeButton" onclick="toggleFileMenuVisibility()"><svg><use href="#closeIcon"></use></svg></button>
             <h2>File </h2>
             <p>Save and export files</p>
@@ -365,7 +363,7 @@
 
         </div>
 
-        <div class="formulaMenuContainer hidden">
+        <div class="formulaMenuContainer hidden" id="formulaMenuContainer">
             <button class="normalButtonElement closeButton" onclick="toggleFormulaMenu()"><svg><use href="#closeIcon"></use></svg></button>
             <h2>Formula</h2>
             <div class="formulaMenuContainer_currentFormulaContainer">
@@ -498,7 +496,7 @@
 
         </div>
 
-        <div class="toolsMenuContainer hidden">
+        <div class="periodicTableMenuContainer hidden" id="periodicTableMenuContainer">
             <button class="normalButtonElement closeButton" onclick="toggleToolsMenu()"><svg><use href="#closeIcon"></use></svg></button>
             <h2>Tools</h2>
             <h3>Periodic Table Look up</h3>
@@ -550,7 +548,7 @@
 
         </div>
 
-        <div class="calculationLogContainer hidden">
+        <div class="calculationLogContainer hidden" id="calculationMenuContainer">
             <button class="normalButtonElement closeButton" onclick="toggleCalculationLogMenu()"><svg><use href="#closeIcon"></use></svg></button>
             <h2>Calculations </h2>
             <p>Calculations has a list of all calculations that have occurred since the last clear.</p>
@@ -621,7 +619,7 @@
             </p>
         </div>
 
-        <div class="changeLogContainer">
+        <div class="changeLogContainer" id="changeLogMenuContainer">
             <button class="normalButtonElement closeButton" onclick="toggleChangeLog()"><svg><use href="#closeIcon"></use></svg></button>
             <h2>Change Log</h2>
             <p>
@@ -720,42 +718,32 @@
             </p>
         </div>
 
+          
         
         
         
-        
-        
-        
-        
-        <footer id="footerInformationAndButtonPanel">
-            
-            <div class="contentButtonPanel notMarkableText">
-                <button class="fileMenuContainerExpander hidden" title="Open and export calculations to a file">File</button>
-                <button class="formulaMenuContainerExpander" title="Get information about the current reaction">Formula</button>
-                <button class="toolsMenuContainerExpander" title="Handy tools, for example a periodic table">Tools</button>
-                <button class="calculationLogContainerExpander" title="Se a log of all calculations that have occured during the execution since the last clear">Calculations</button>
-                <button class="helpContainerExpander" title="Documentation">Help</button>
-                <button class="changeLogContainerExpander" title="Changes through out the updates">Change Log</button>
-            </div>
-            <div class="footerContainer notMarkableText">
-                <p>Version: 1.7</p>
-                <p class="displayOneFile tryshow">Onefile Webversion</p>
-                <p>© Oscar Kristensson 2024</p>
-                <!-- 
-                    <div class="themeSelectorContainer">
-                        <label for="themeSelector">Theme: </label>
-                        <select name="Theme Selector" class="themeSelector" id="themeSelector">
-                            <option value="dark-theme">Dark</option>
-                            <option value="light-theme">Light</option>
-                            <option value="blue-theme" style="color: hsl(240, 100%, 75%);">Blue</option>
-                        </select>
-                    </div>
-                 -->
-            </div>
-            
-        </footer>
+
         
         </div>
+            
+                
+        <div class="footerContainer notMarkableText">
+            <p>Version: 1.7</p>
+            <p class="displayOneFile tryshow">Onefile Webversion</p>
+            <p>© Oscar Kristensson 2024</p>
+            <!-- 
+                <div class="themeSelectorContainer">
+                    <label for="themeSelector">Theme: </label>
+                    <select name="Theme Selector" class="themeSelector" id="themeSelector">
+                        <option value="dark-theme">Dark</option>
+                        <option value="light-theme">Light</option>
+                        <option value="blue-theme" style="color: hsl(240, 100%, 75%);">Blue</option>
+                    </select>
+                </div>
+                -->
+        </div>
+            
+
 
         <div class="backgroundContainer"></div>
     </body>

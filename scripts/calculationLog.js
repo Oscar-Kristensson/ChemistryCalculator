@@ -2,17 +2,8 @@ let calculations = []
 
 let calculationLogDividers = []
 
-const calculationsContainer = document.querySelector(".calculationLogContainer")
 
-const calculationLogExpander = document.querySelector(".calculationLogContainerExpander")
 
-function toggleCalculationLogMenu(){
-    calculationLogExpander.classList.toggle("menuOpen");
-    calculationsContainer.classList.toggle("hidden");
-
-}
-
-calculationLogExpander.addEventListener("click", toggleCalculationLogMenu);
 
 
 class Calculation{

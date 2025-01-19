@@ -322,14 +322,7 @@ const currentOpenFileDisplayElement = document.querySelector(".currentOpenFileDi
 fileMenuInput.addEventListener("change", loadCalculationState);
 
 
-fileMenuContainerExpander.addEventListener("click", toggleFileMenuVisibility);
 
-
-function toggleFileMenuVisibility(){
-    fileMenuContainer.classList.toggle("hidden")
-    fileMenuContainerExpander.classList.toggle("menuOpen")
-
-}
 
 // Error handler elements
 

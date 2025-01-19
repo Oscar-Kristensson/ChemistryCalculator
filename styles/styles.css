@@ -159,7 +159,8 @@ body{
 
 /* Calculator GUI */
 
-.calculatorAttributesContainer{
+.calculatorAttributesContainer {
+    grid-area: calculatorAttributes;
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -179,7 +180,8 @@ body{
     color: var(--background-color-dark3);
 }
 
-.calculatorContainer{
+.calculatorContainer {
+    grid-area: calculator;
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -563,14 +565,13 @@ body.normalCalculationMode .normalCalculationMode {
 
 /* Footer */
 
-footer {
+.left-nav-bar {
+    grid-area: left-nav-bar;
     font-family: 'Roboto Mono', monospace;
     font-size: small;
     color: var(--low-emphasis-color);
 
-    position: sticky;
-    bottom: 0;
-    left: 0;
+
     z-index: 4;
     padding: 2rem;
     border-top-left-radius: 1rem;
@@ -579,16 +580,20 @@ footer {
     background-color: var(--background-color-floatingBox);
     transition: all 500ms ease-in-out;
     backdrop-filter: blur(10px);
-
-
-
+    padding-right: 0.25rem;
     
 }
 
-.footerContainer{
+.footerContainer {
     display: flex;
+    position: fixed;
     justify-content: center;
     align-items: center;
+    bottom: 0.2rem;
+    right: 0.2rem;
+    color: var(--low-emphasis-color);
+    font-size: 0.75rem;
+    z-index: 2;
 }
 
 .footerContainer p{
@@ -599,11 +604,41 @@ footer {
 /* Help */
 .contentButtonPanel{
     display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
+    justify-content: left;
+    flex-direction: column;
+    padding: 0.5rem;
 }
 
-.contentButtonPanel button{
+@media screen and (max-width: 600px) {
+    .contentButtonPanel {
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
+}
+
+.left-nav-bar .buttonContainer {
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: center;
+    height: 2rem;
+    margin-bottom: 0.2rem;
+}
+
+.left-nav-bar .buttonContainer .label {
+    font-family: 'Roboto', sans-serif;
+    font-size: 1rem;
+    color: var(--color-light1);
+    margin-left: 2ch;
+
+}
+
+.left-nav-bar .buttonContainer svg {
+    height: 2rem;
+    color: var(--color-light1);
+}
+
+
+.contentButtonPanel button {
     background-color: transparent;
     border: none;
     font-size: 1rem;
@@ -670,11 +705,12 @@ footer {
 }
 
 /* Formula Container */
-.formulaMenuContainer{
+.formulaMenuContainer {
     background-color: var(--background-color-dark2);
     padding: 1rem;
     margin: 1rem;
-    display: none;
+    display: block;
+
     position: relative;
 }
 
@@ -772,9 +808,8 @@ footer {
 }
 
 
-.formulaMenuContainer.shown {
-    display: block;
-
+.formulaMenuContainer.hidden {
+    display: none;
 }
 
 .formulaMenuContainer .table td{
@@ -814,46 +849,46 @@ footer {
 
 
 
-/* toolsMenuContainer */
-.toolsMenuContainer{
+/* periodicTableContainer */
+.periodicTableMenuContainer {
     background-color: var(--background-color-dark2);
     padding: 1rem;
     margin: 1rem;
-    display: none;
+    display: block;
     position: relative;
 }
 
-.toolsMenuContainer li{
+.periodicTableMenuContainer li{
     margin-bottom: 1rem;
 }
 
-.toolsMenuContainer h4{
+.periodicTableMenuContainer h4{
     font-size: 1rem;
     margin-top: 3rem;
 
 }
-.toolsMenuContainer h2{
+.periodicTableMenuContainer h2{
     font-weight: lighter;
 }
 
-.toolsMenuContainer h3{
+.periodicTableMenuContainer h3{
     font-weight: lighter;
 }
 
 
-.toolsMenuContainer.shown {
-    display: block;
+.periodicTableMenuContainer.hidden {
+    display: none;
 }
 
-.toolsMenuContainer .normalButtonElement{
+.periodicTableMenuContainer .normalButtonElement{
     display: flex;
 }
 
-.toolsMenuContainer .normalInputElement.autofilled{
+.periodicTableMenuContainer .normalInputElement.autofilled{
     color: var(--color-autofilled-text);
 }
 
-.toolsMenuContainer .normalInputElement.unvalid{
+.periodicTableMenuContainer .normalInputElement.unvalid{
     color: var(--color-unvalid);
 }
 
@@ -862,12 +897,12 @@ footer {
     background-color: var(--background-color-dark2);
     padding: 1rem;
     margin: 1rem;
-    display: none;
+    display: block;
     position: relative;
 }
 
-.changeLogContainer.shown{
-    display: block;
+.changeLogContainer.hidden{
+    display: none;
 }
 
 
@@ -1609,4 +1644,19 @@ body.acidProtolysisReaction .acidConstantInputContainer{
 
 body.baceProtolysisReaction .baseConstantInputContainer{
     display: inherit;
+}
+
+
+
+/* Main grid design */
+@media screen and (min-width: 600px) {
+    main {
+        display: grid;
+        grid-template-areas: 
+            "left-nav-bar calculator"
+            "left-nav-bar calculatorAttributes"
+        ;
+        
+        grid-template-columns: 200px 2fr;
+    }
 }
