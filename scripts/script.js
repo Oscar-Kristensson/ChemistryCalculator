@@ -70,7 +70,10 @@ class MenuManagerClass {
 
             menuActivator.container.addEventListener("click", () => {
                 this.toggle(index);
-            })
+            });
+
+            if (this.menus[index].hasOwnProperty("closeButtonId"))
+                document.getElementById(this.menus[index].closeButtonId).addEventListener("click", () => { this.toggle(index); });
 
         });
     }
@@ -106,41 +109,47 @@ const MenuManager = new MenuManagerClass(document.querySelector(".left-nav-bar")
         "icon": `
             <svg xmlns="http://www.w3.org/2000/svg" height="48px" viewBox="0 -960 960 960" width="48px" fill="currentColor"><path d="M183-196q-27.5 0-47.25-19.75T116-263v-354q0-27.5 19.75-47.25T183-684h200l80-80h314q27.5 0 47.25 19.75T844-697v434q0 27.5-19.75 47.25T777-196H183Zm9-248h212q14 0 23-9t9-23v-212L192-444Zm-41-8 197-197H183q-14 0-23 9t-9 23v165Zm0 43v146q0 14 9 23t23 9h594q14 0 23-9t9-23v-434q0-14-9-23t-23-9H471v253q0 27.5-19.75 47.25T404-409H151Zm312-89Z"/></svg>
         `,
-        "menuElementId": "fileMenuContainer"
+        "menuElementId": "fileMenuContainer",
+        "closeButtonId": "fileMenuCloseButton"
     },
     {
         "name": "Formula",
         "icon": `
             <svg xmlns="http://www.w3.org/2000/svg" height="48px" viewBox="0 -960 960 960" width="48px" fill="#e8eaed"><path fill="currentColor" d="M334-252h25v-83h83v-25h-83v-82h-25v82h-82v25h82v83Zm205-32h168v-25H539v25Zm0-102h168v-25H539v25Zm26-163 57-58 58 58 18-19-58-56 58-58-18-18-57.5 57-57.5-57-19 18 58 58-58 56 19 19Zm-302-63h167v-25H263v25Zm-37.24 440q-22 0-37.88-15.88Q172-203.76 172-225.76v-508.48q0-22 15.88-37.88Q203.76-788 225.76-788h508.48q22 0 37.88 15.88Q788-756.24 788-734.24v508.48q0 22-15.88 37.88Q756.24-172 734.24-172H225.76Zm.24-22h508q12 0 22-10t10-22v-508q0-12-10-22t-22-10H226q-12 0-22 10t-10 22v508q0 12 10 22t22 10Zm-32-572v572-572Z"/></svg>
         `,
-        "menuElementId": "formulaMenuContainer"
+        "menuElementId": "formulaMenuContainer",
+        "closeButtonId": "formulaMenuCloseButton"
     },
     {
         "name": "Periodic Table",
         "icon": `<svg width="48" height="48" fill="red" viewBox="0 0 12.7 12.7" version="1.1" id="svg1"> <path id="path1" fill="currentColor" style="display:inline;stroke-linecap:round;stroke-linejoin:round;paint-order:fill markers stroke" d="M 1.5353068,1.1057128 A 0.13230423,0.13230423 0 0 0 1.4024984,1.2364542 V 3.1639851 5.0899658 7.0154296 8.9414103 A 0.13230423,0.13230423 0 0 0 1.5353068,9.0742187 H 3.4607707 5.3867513 7.3127319 9.2381958 11.166243 A 0.13230423,0.13230423 0 0 0 11.296985,8.9414103 V 7.0154296 5.0899658 3.1639851 1.2364542 A 0.13230423,0.13230423 0 0 0 11.166243,1.1057128 H 9.2381958 A 0.13230423,0.13230423 0 0 0 9.1074544,1.2364542 V 3.0311767 H 7.3127319 5.3867513 3.5935791 V 1.2364542 A 0.13230423,0.13230423 0 0 0 3.4607707,1.1057128 Z m 0.1307414,0.2635498 h 1.661914 v 1.6619141 h -1.661914 z m 7.704956,0 H 11.033435 V 3.0311767 H 9.3710042 Z m -7.704956,1.9254639 h 1.661914 v 1.6624308 h -1.661914 z m 1.9275309,0 H 5.2539429 V 4.9571573 H 3.5935791 Z m 1.9259806,0 H 7.1814738 V 4.9571573 H 5.5195597 Z m 1.9259807,0 h 1.661914 v 1.6624308 h -1.661914 z m 1.9254638,0 H 11.033435 V 4.9571573 H 9.3710042 Z m -7.704956,1.9280477 h 1.661914 v 1.659847 h -1.661914 z m 1.9275309,0 h 1.6603638 v 1.659847 H 3.5935791 Z m 1.9259806,0 h 1.6619141 v 1.659847 H 5.5195597 Z m 1.9259807,0 h 1.661914 v 1.659847 h -1.661914 z m 1.9254638,0 h 1.6624308 v 1.659847 H 9.3710042 Z m -7.704956,1.9254639 h 1.661914 v 1.6603637 h -1.661914 z m 1.9275309,0 H 5.2539429 V 8.8086018 H 3.5935791 Z m 1.9259806,0 H 7.1814738 V 8.8086018 H 5.5195597 Z m 1.9259807,0 h 1.661914 v 1.6603637 h -1.661914 z m 1.9254638,0 H 11.033435 V 8.8086018 H 9.3710042 Z" /></g></g></svg>`,
         "menuElementId": "periodicTableMenuContainer",
         "openEventListener": () => { if (periodicTableMenuContainer.classList.contains("hidden") && !isRenderd) createPeriodicTable(); },
+        "closeButtonId": "periodicTableCloseButton"
     },
     {
         "name": "Calculations",
         "icon": `
             <svg xmlns="http://www.w3.org/2000/svg" height="48px" viewBox="0 -960 960 960" width="48px" fill="#e8eaed"><path fill="currentColor" d="M334-252h25v-83h83v-25h-83v-82h-25v82h-82v25h82v83Zm205-32h168v-25H539v25Zm0-102h168v-25H539v25Zm26-163 57-58 58 58 18-19-58-56 58-58-18-18-57.5 57-57.5-57-19 18 58 58-58 56 19 19Zm-302-63h167v-25H263v25Zm-37.24 440q-22 0-37.88-15.88Q172-203.76 172-225.76v-508.48q0-22 15.88-37.88Q203.76-788 225.76-788h508.48q22 0 37.88 15.88Q788-756.24 788-734.24v508.48q0 22-15.88 37.88Q756.24-172 734.24-172H225.76Zm.24-22h508q12 0 22-10t10-22v-508q0-12-10-22t-22-10H226q-12 0-22 10t-10 22v508q0 12 10 22t22 10Zm-32-572v572-572Z"/></svg>
         `,
-        "menuElementId": "calculationMenuContainer"
+        "menuElementId": "calculationMenuContainer",
+        "closeButtonId": "calculationMenuCloseButton"
     },
     {
         "name": "Help",
         "icon": `
             <svg xmlns="http://www.w3.org/2000/svg" height="48px" viewBox="0 -960 960 960" width="48px" fill="#e8eaed"><path d="M483.99-271q11.01 0 19.01-8.49 8-8.48 8-19.5 0-10.01-7.99-18.51-7.98-8.5-19-8.5-11.01 0-19.51 8.49-8.5 8.48-8.5 18.5 0 11.01 8.49 19.51 8.48 8.5 19.5 8.5ZM462-402h36q1-24.32 9-42.16Q515-462 541-486q28-26 40.5-47.92t12.5-49.31q0-47.19-31.25-75.98Q531.51-688 485.47-688 443-688 412-666t-46 53l34 14q10-24 29-39.5t53-15.5q39 0 59 21.5t20 50.5q0 21-11.71 38-11.72 17-31.29 35-31 28-43.5 53.5T462-402Zm17.72 286q-75.36 0-141.26-28.91-65.9-28.91-115.23-78.19-49.34-49.28-78.28-115.22Q116-404.27 116-479.83q0-75.44 28.97-141.88 28.97-66.43 78.53-116.04 49.57-49.61 115.15-77.93Q404.24-844 479.38-844q75.51 0 142.25 28.29 66.74 28.28 116.13 77.84 49.39 49.57 77.81 116.09Q844-555.26 844-479.63q0 75.63-28.29 141.03-28.28 65.39-77.83 114.99-49.55 49.6-116.05 78.61-66.5 29-142.11 29Zm.28-35q136.51 0 232.76-96.24Q809-343.49 809-480t-96.24-232.76Q616.51-809 480-809t-232.76 96.24Q151-616.51 151-480t96.24 232.76Q343.49-151 480-151Zm0-329Z"/></svg>
         `,
-        "menuElementId": "calculationMenuContainer"
+        "menuElementId": "calculationMenuContainer",
+        "closeButtonId": "helpContainerCloseButton"
     },
     {
         "name": "Change Log",
         "icon": `
             
         `,
-        "menuElementId": "changeLogMenuContainer"
+        "menuElementId": "changeLogMenuContainer",
+        "closeButtonId": "changeLogCloseButton"
     },
 ]);
 

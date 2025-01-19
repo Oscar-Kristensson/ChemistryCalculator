@@ -308,7 +308,7 @@
 
 
         <div class="fileMenuContainer hidden" id="fileMenuContainer">
-            <button class="closeButton" onclick="toggleFileMenuVisibility()"><svg><use href="#closeIcon"></use></svg></button>
+            <button class="closeButton" id="fileMenuCloseButton"><svg><use href="#closeIcon"></use></svg></button>
             <h2>File </h2>
             <p>Save and export files</p>
 
@@ -364,7 +364,7 @@
         </div>
 
         <div class="formulaMenuContainer hidden" id="formulaMenuContainer">
-            <button class="normalButtonElement closeButton" onclick="toggleFormulaMenu()"><svg><use href="#closeIcon"></use></svg></button>
+            <button class="normalButtonElement closeButton" id="formulaMenuCloseButton"><svg><use href="#closeIcon"></use></svg></button>
             <h2>Formula</h2>
             <div class="formulaMenuContainer_currentFormulaContainer">
                 <div class="coefficentSettingContainer">
@@ -497,7 +497,7 @@
         </div>
 
         <div class="periodicTableMenuContainer hidden" id="periodicTableMenuContainer">
-            <button class="normalButtonElement closeButton" onclick="toggleToolsMenu()"><svg><use href="#closeIcon"></use></svg></button>
+            <button class="normalButtonElement closeButton" id="periodicTableCloseButton"><svg><use href="#closeIcon"></use></svg></button>
             <h2>Tools</h2>
             <h3>Periodic Table Look up</h3>
             <div class="balancingTableContainer">
@@ -549,14 +549,14 @@
         </div>
 
         <div class="calculationLogContainer hidden" id="calculationMenuContainer">
-            <button class="normalButtonElement closeButton" onclick="toggleCalculationLogMenu()"><svg><use href="#closeIcon"></use></svg></button>
+            <button class="normalButtonElement closeButton" id="calculationMenuCloseButton"><svg><use href="#closeIcon"></use></svg></button>
             <h2>Calculations </h2>
             <p>Calculations has a list of all calculations that have occurred since the last clear.</p>
 
         </div>
 
         <div class="helpContainer">
-            <button class="normalButtonElement closeButton" onclick="toggleHelp()"><svg><use href="#closeIcon"></use></svg></button>
+            <button class="normalButtonElement closeButton" id="helpContainerCloseButton"><svg><use href="#closeIcon"></use></svg></button>
             <h2>Help</h2>
             <p>Chemistry Calculator is a calculator for counting with simple stoichiometry. <a href="https://sites.google.com/student.tabyenskilda.se/ok-host/chemistrycalculator/documentation">Link to documentation.</a>
             </p>
@@ -619,8 +619,8 @@
             </p>
         </div>
 
-        <div class="changeLogContainer" id="changeLogMenuContainer">
-            <button class="normalButtonElement closeButton" onclick="toggleChangeLog()"><svg><use href="#closeIcon"></use></svg></button>
+        <div class="changeLogContainer hidden" id="changeLogMenuContainer">
+            <button class="normalButtonElement closeButton" id="changeLogCloseButton"><svg><use href="#closeIcon"></use></svg></button>
             <h2>Change Log</h2>
             <p>
                 <h4>1.7</h4>
