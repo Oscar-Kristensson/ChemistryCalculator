@@ -2523,8 +2523,6 @@ let calculationMode = undefined;
 
 
 function onFormulaChange(){
-    console.log("ADDING CLASSES!");
-    console.error("Test");
     // Fires when the formula is changed
     FormulaAPI.update();
     document.body.classList.remove("protolysisReaction"); 
@@ -2731,6 +2729,8 @@ function updateEquilibriumConstant(){
 
 
 function createEquilibriumConstantEquationInGG() {
+    console.warn("GG EQ Equation generator not yet implemented");
+    return;
     const tempGeogebraExportSystem = new GeogebraExportSystem();
 
     const scopes = getScopes();

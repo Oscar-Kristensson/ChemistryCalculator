@@ -432,7 +432,7 @@ body.normalCalculationMode .normalCalculationMode {
 }
 
 /* Table input design */
-.tableDataInput{
+.tableDataInput {
     background-color: transparent;
     color: var(--color-light1);
     border: none;
@@ -440,7 +440,14 @@ body.normalCalculationMode .normalCalculationMode {
     font-family: "Roboto Mono", monospace;
     width: 2cm;
     transition: all 500ms ease-in-out;
+    padding-bottom: 0.5rem;
+    padding-top: 0.5rem;
+    border-radius: 0.25rem;
     
+}
+
+.tableDataInput:focus {
+    background-color: var(--background-color-dark3);
 }
 
 @media (hover: hover) and (pointer: fine) {
