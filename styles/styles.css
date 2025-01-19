@@ -528,15 +528,15 @@ body.normalCalculationMode .normalCalculationMode {
     display: none;
 }
 
-.buttonPanelContainer.small .clearButtonContainer{
+.buttonPanelContainer.small .clearButtonContainer {
     display: none;
 }
 
-.clearButtonContainer{
+.clearButtonContainer {
     display: flex;
 }
 
-.clearButtonContainer select{
+.clearButtonContainer select {
     padding: 0.25rem;
     border-radius: 0.25rem;
     border: none;
@@ -574,14 +574,16 @@ body.normalCalculationMode .normalCalculationMode {
 
     z-index: 4;
     padding: 2rem;
-    border-top-left-radius: 1rem;
-    border-top-right-radius: 1rem;
 
     background-color: var(--background-color-floatingBox);
     transition: all 500ms ease-in-out;
     backdrop-filter: blur(10px);
     padding-right: 0.25rem;
-    
+    background-image: linear-gradient(10deg, hsl(0, 40%, 20%), hsl(0, 60%, 20%));
+}
+
+.light-theme .left-nav-bar {
+    background-image: linear-gradient(10deg, hsl(0, 80%, 75%), hsl(0, 100%, 75%));
 }
 
 .footerContainer {
@@ -621,7 +623,29 @@ body.normalCalculationMode .normalCalculationMode {
     flex-wrap: nowrap;
     align-items: center;
     height: 2rem;
-    margin-bottom: 0.2rem;
+    padding-top: 0.4rem;
+    padding-bottom: 0.4rem;
+    border-radius: 0.4rem;
+}
+
+.left-nav-bar .buttonContainer.active {
+    background-color: hsl(0, 50%, 15%);
+}
+
+.light-theme .left-nav-bar .buttonContainer.active {
+    background-color: hsl(0, 50%, 85%);
+}
+
+
+@media (hover: hover) and (pointer: fine) {  
+    .left-nav-bar .buttonContainer:hover{
+        background-color: hsl(0, 50%, 15%);
+    }
+    
+    .light-theme .left-nav-bar .buttonContainer:hover {
+        background-color: hsl(0, 50%, 85%);
+    }
+    
 }
 
 .left-nav-bar .buttonContainer .label {
@@ -1657,6 +1681,7 @@ body.baceProtolysisReaction .baseConstantInputContainer{
             "left-nav-bar calculatorAttributes"
         ;
         
-        grid-template-columns: 200px 2fr;
+        grid-template-columns: 225px 2fr;
+        height: 100vh;
     }
 }

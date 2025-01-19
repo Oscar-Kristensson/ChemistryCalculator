@@ -84,6 +84,8 @@ class MenuManagerClass {
 
             menuElement.classList.add("hidden");
 
+            this.menus[i].menuActivator.container.classList.remove("active");
+
         };
     };
 
@@ -91,14 +93,24 @@ class MenuManagerClass {
         const menuElement = document.getElementById(this.menus[index].menuElementId)
         if (menuElement.classList.contains("hidden")) {
             this.closeAll();
+            this.menus[index].menuActivator.container.classList.add("active");
+
+            setTimeout(() => { menuElement.scrollIntoView({ behavior: "smooth", block: "start" }); }, 500);
+
+
 
             if (this.menus[index].hasOwnProperty("openEventListener")) {
                 this.menus[index].openEventListener();
-            }
+            };
 
-        }
+        } else {
+            this.menus[index].menuActivator.container.classList.remove("active");
+        };
 
         menuElement.classList.toggle("hidden");
+
+        
+
     };
 } 
 
@@ -138,7 +150,7 @@ const MenuManager = new MenuManagerClass(document.querySelector(".left-nav-bar")
     {
         "name": "Help",
         "icon": `
-            <svg xmlns="http://www.w3.org/2000/svg" height="48px" viewBox="0 -960 960 960" width="48px" fill="#e8eaed"><path d="M483.99-271q11.01 0 19.01-8.49 8-8.48 8-19.5 0-10.01-7.99-18.51-7.98-8.5-19-8.5-11.01 0-19.51 8.49-8.5 8.48-8.5 18.5 0 11.01 8.49 19.51 8.48 8.5 19.5 8.5ZM462-402h36q1-24.32 9-42.16Q515-462 541-486q28-26 40.5-47.92t12.5-49.31q0-47.19-31.25-75.98Q531.51-688 485.47-688 443-688 412-666t-46 53l34 14q10-24 29-39.5t53-15.5q39 0 59 21.5t20 50.5q0 21-11.71 38-11.72 17-31.29 35-31 28-43.5 53.5T462-402Zm17.72 286q-75.36 0-141.26-28.91-65.9-28.91-115.23-78.19-49.34-49.28-78.28-115.22Q116-404.27 116-479.83q0-75.44 28.97-141.88 28.97-66.43 78.53-116.04 49.57-49.61 115.15-77.93Q404.24-844 479.38-844q75.51 0 142.25 28.29 66.74 28.28 116.13 77.84 49.39 49.57 77.81 116.09Q844-555.26 844-479.63q0 75.63-28.29 141.03-28.28 65.39-77.83 114.99-49.55 49.6-116.05 78.61-66.5 29-142.11 29Zm.28-35q136.51 0 232.76-96.24Q809-343.49 809-480t-96.24-232.76Q616.51-809 480-809t-232.76 96.24Q151-616.51 151-480t96.24 232.76Q343.49-151 480-151Zm0-329Z"/></svg>
+            <svg xmlns="http://www.w3.org/2000/svg" height="48px" viewBox="0 -960 960 960" width="48px" fill="currentColor"><path d="M483.99-271q11.01 0 19.01-8.49 8-8.48 8-19.5 0-10.01-7.99-18.51-7.98-8.5-19-8.5-11.01 0-19.51 8.49-8.5 8.48-8.5 18.5 0 11.01 8.49 19.51 8.48 8.5 19.5 8.5ZM462-402h36q1-24.32 9-42.16Q515-462 541-486q28-26 40.5-47.92t12.5-49.31q0-47.19-31.25-75.98Q531.51-688 485.47-688 443-688 412-666t-46 53l34 14q10-24 29-39.5t53-15.5q39 0 59 21.5t20 50.5q0 21-11.71 38-11.72 17-31.29 35-31 28-43.5 53.5T462-402Zm17.72 286q-75.36 0-141.26-28.91-65.9-28.91-115.23-78.19-49.34-49.28-78.28-115.22Q116-404.27 116-479.83q0-75.44 28.97-141.88 28.97-66.43 78.53-116.04 49.57-49.61 115.15-77.93Q404.24-844 479.38-844q75.51 0 142.25 28.29 66.74 28.28 116.13 77.84 49.39 49.57 77.81 116.09Q844-555.26 844-479.63q0 75.63-28.29 141.03-28.28 65.39-77.83 114.99-49.55 49.6-116.05 78.61-66.5 29-142.11 29Zm.28-35q136.51 0 232.76-96.24Q809-343.49 809-480t-96.24-232.76Q616.51-809 480-809t-232.76 96.24Q151-616.51 151-480t96.24 232.76Q343.49-151 480-151Zm0-329Z"/></svg>
         `,
         "menuElementId": "calculationMenuContainer",
         "closeButtonId": "helpContainerCloseButton"
@@ -146,7 +158,7 @@ const MenuManager = new MenuManagerClass(document.querySelector(".left-nav-bar")
     {
         "name": "Change Log",
         "icon": `
-            <svg xmlns="http://www.w3.org/2000/svg" height="48px" viewBox="0 -960 960 960" width="48px" fill="#e8eaed"><path d="M339-261h283v-32H339v32Zm0-168h283v-32H339v32Zm-75 313q-27.5 0-47.25-19.75T197-183v-594q0-27.5 19.75-47.25T264-844h322l177 176v485q0 27.5-19.75 47.25T696-116H264Zm305-535v-158H264q-12 0-22 10t-10 22v594q0 12 10 22t22 10h432q12 0 22-10t10-22v-468H569ZM232-809v158-158 658-658Z"/></svg>
+            <svg xmlns="http://www.w3.org/2000/svg" height="48px" viewBox="0 -960 960 960" width="48px" fill="currentColor"><path d="M339-261h283v-32H339v32Zm0-168h283v-32H339v32Zm-75 313q-27.5 0-47.25-19.75T197-183v-594q0-27.5 19.75-47.25T264-844h322l177 176v485q0 27.5-19.75 47.25T696-116H264Zm305-535v-158H264q-12 0-22 10t-10 22v594q0 12 10 22t22 10h432q12 0 22-10t10-22v-468H569ZM232-809v158-158 658-658Z"/></svg>
         `,
         "menuElementId": "changeLogMenuContainer",
         "closeButtonId": "changeLogCloseButton"
