@@ -686,11 +686,7 @@ body.normalCalculationMode .normalCalculationMode {
 
 
 .helpContainer{
-    background-color: var(--background-color-dark2);
-    padding: 1rem;
-    margin: 1rem;
-    display: none;
-    position: relative;
+    display: block;
 }
 
 .helpContainer li{
@@ -706,8 +702,8 @@ body.normalCalculationMode .normalCalculationMode {
     font-weight: lighter;
 }
 
-.helpContainer.shown {
-    display: block;
+.helpContainer.hidden {
+    display: none;
 
 }
 
@@ -730,7 +726,6 @@ body.normalCalculationMode .normalCalculationMode {
 
 /* Formula Container */
 .formulaMenuContainer {
-    background-color: var(--background-color-dark2);
     padding: 1rem;
     margin: 1rem;
     display: block;
@@ -1684,4 +1679,53 @@ body.baceProtolysisReaction .baseConstantInputContainer{
         grid-template-columns: 225px 2fr;
         height: 100vh;
     }
+}
+
+
+.menuContainer.small {
+    position: fixed;
+    top: 50vh;
+    left: 50vw;
+
+    min-width: 600px;
+
+    max-height: 90vh;
+    transform: translate(-50%, -50%);
+
+}
+
+.menuContainer.maximized {
+    position: fixed;
+    top: 0;
+    left: 50px;
+    bottom: 0;
+    right: 50px;
+    padding: 2rem;
+}
+
+@media screen and (max-width: 600px) {
+    .menuContainer {
+        position: fixed;
+        top: 0;
+        left: 0;
+        padding: 2rem;
+        width: 100vw;
+    }
+      
+    
+}
+
+
+.menuContainer {
+    background-image: linear-gradient(10deg, hsla(0, 0%, 5%, 0.98), hsl(0, 0%, 10%, 0.95));
+    box-shadow: 0.2rem 0.2rem 0.2rem rgba(0, 0, 0, 0.6);
+    padding: 1rem;
+    overflow: auto;
+    z-index: 4;
+    max-width: 100vw;
+
+}
+
+.light-theme .menuContainer {
+    background-image: linear-gradient(10deg, hsla(0, 0%, 95%, 0.98), hsl(0, 0%, 90%, 0.95));
 }
