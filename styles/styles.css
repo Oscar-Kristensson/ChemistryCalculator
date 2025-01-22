@@ -616,6 +616,8 @@ body.normalCalculationMode .normalCalculationMode {
         flex-direction: row;
         flex-wrap: wrap;
     }
+
+
 }
 
 .left-nav-bar .buttonContainer {
@@ -1716,6 +1718,11 @@ body.baceProtolysisReaction .baseConstantInputContainer{
         right: 0 !important;
         padding: 2rem;
     }
+
+    .menuContainer.small {
+        transform: translate(0%, -50%);
+    }
+    
       
     
 }
