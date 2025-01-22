@@ -589,17 +589,17 @@ body.normalCalculationMode .normalCalculationMode {
 .footerContainer {
     display: flex;
     position: fixed;
+    flex-direction: column;
     justify-content: center;
-    align-items: center;
-    bottom: 0.2rem;
-    right: 0.2rem;
+    bottom: 0.3rem;
     color: var(--low-emphasis-color);
     font-size: 0.75rem;
     z-index: 2;
 }
 
+
 .footerContainer p{
-    margin: 1rem
+    margin: 0.1rem
 }
 
 
@@ -1687,11 +1687,16 @@ body.baceProtolysisReaction .baseConstantInputContainer{
     top: 50vh;
     left: 50vw;
 
-    min-width: 600px;
 
     max-height: 90vh;
     transform: translate(-50%, -50%);
 
+}
+
+@media screen and (min-width: 600px) {
+    .menuContainer.small {
+        min-width: 600px;
+    } 
 }
 
 .menuContainer.maximized {
@@ -1707,9 +1712,9 @@ body.baceProtolysisReaction .baseConstantInputContainer{
     .menuContainer {
         position: fixed;
         top: 0;
-        left: 0;
+        left: 0 !important;
+        right: 0 !important;
         padding: 2rem;
-        width: 100vw;
     }
       
     
