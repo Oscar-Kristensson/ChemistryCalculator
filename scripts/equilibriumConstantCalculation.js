@@ -70,8 +70,8 @@ function calculateEquilibriumQuotient(transfer, equilibriumConstantType_ = equil
     let quotientValue = 1;
 
     scopes[1].forEach((formulaUnit) => {
-        let concentration = formulaUnit.getValue(quantity.c);
-        quotientValue *= (concentration + transfer) ** formulaUnit.getValue(quantity.ratio);
+        let concentration = Number(formulaUnit.getValue(quantity.c));
+        quotientValue *= (concentration + transfer) ** Number(formulaUnit.getValue(quantity.ratio));
     });
 
 
@@ -80,8 +80,8 @@ function calculateEquilibriumQuotient(transfer, equilibriumConstantType_ = equil
         if (equilibriumConstantType_ === equilibriumConstantType.acid && formulaUnit.chemistryInput.getValue() === "H_2O") 
             return;
 
-        let concentration = formulaUnit.getValue(quantity.c);
-        quotientValue /= (concentration - transfer) ** formulaUnit.getValue(quantity.ratio);
+        let concentration = Number(formulaUnit.getValue(quantity.c));
+        quotientValue /= (concentration - transfer) ** Number(formulaUnit.getValue(quantity.ratio));
     });
 
     return quotientValue;
@@ -157,10 +157,18 @@ function getEquilibriumConstantElement(equilibriumConstantType_) {
 };
 
 
-
+/**
+ * This function gathers the concentration values (including or excluding water depending on if the equilibriumConstantType value is normal, acid or base)
+ * Then the transfer values are calculated with a min-max algorithm 
+ * Finally the equilibrium values for the transfer are updated
+ * 
+ * @param {*} equilibriumConstantType_ 
+ */
 function doTransferValues(equilibriumConstantType_ = equilibriumConstantType.normal) {
     // calculateEquilibriumConstantBasic(quantity.ceq, type = equilibriumConstantType.normal, false);
     // Eqilibrium constant type might need to be change when expanding to multiple diffrent constants
+
+    console.log("Calculating transfer");
 
 
     let IOElement = getEquilibriumConstantElement(equilibriumConstantType_);
@@ -201,6 +209,8 @@ function findTransferValues(equilibriumConstantValue, equilibriumConstantType_ =
     */
 
     // console.log(equilibriumConstantType_);
+
+    console.log("Calculating transfer with min-max");
 
     const defaultMinMaxValues = calculateMinMaxTransferValues(equilibriumConstantType_);
 

@@ -1015,6 +1015,11 @@ function unlockAfterCalculations(){
 
 let calculationCount = 0;
 
+/**
+ * This function is executed when the calculate button is pressed. This function calls 
+ * other functions handeling the calculations them selves, for example autofillMolarmasses(); 
+ * @returns 
+ */
 function executeCalculations(){
     calculationCount++;
     addHeadingDivider("Started Calculation " + calculationCount);
@@ -1067,6 +1072,9 @@ function executeCalculations(){
 
 
         if (calculationMode === 1 && checkIfTransferCanBeCalculated(equilibriumConstantType.acid)) { doTransferValues(equilibriumConstantType.acid); calculating = true; };
+        if (calculationMode === 1 && checkIfTransferCanBeCalculated(equilibriumConstantType.base)) { doTransferValues(equilibriumConstantType.base); calculating = true; };
+        if (calculationMode === 1 && checkIfTransferCanBeCalculated(equilibriumConstantType.normal)) { doTransferValues(equilibriumConstantType.normal); calculating = true; };
+
 
 
 
